@@ -1,5 +1,5 @@
 # Homepage body content.
-from parts import SITE, ICON_PIN, ICON_PHONE, ICON_MAIL, ICON_CLOCK, ICON_CHECK, STAR, ARR, SQUIGGLE, CONTOURS
+from parts import SITE, AREA_PAGES, ICON_PIN, ICON_PHONE, ICON_MAIL, ICON_CLOCK, ICON_CHECK, STAR, ARR, SQUIGGLE, CONTOURS
 
 R = ""  # root prefix for index
 
@@ -253,11 +253,11 @@ BODY = f'''
       <h2 id="areas-h">Serving Central Oregon's high desert</h2>
       <p class="lede">Based on Bend's west side, our crews run daily routes from La Pine to Prineville. If you can see the Sisters from your driveway, you're probably in our service area.</p>
       <ul class="area-list">
-        {"".join(f"<li>{ICON_PIN}{a}</li>" for a in SITE["areas"])}
+        {"".join(f'<li>{ICON_PIN}<a href="areas/{s}.html">{n}</a></li>' for s, n in AREA_PAGES)}
       </ul>
     </div>
     <div class="map-card rv">
-      <img src="assets/img/map-central-oregon.svg" alt="Stylized map of Central Oregon showing the Sage &amp; Stone service area: Bend, Redmond, Sisters, Tumalo, Sunriver, La Pine, Powell Butte and Prineville along Highway 97 and the Deschutes River" width="560" height="470" loading="lazy">
+      <img src="assets/img/map-central-oregon.webp" alt="Stylized map of Central Oregon showing the Sage &amp; Stone service area: Bend, Redmond, Sisters, Tumalo, Sunriver, La Pine, Powell Butte and Prineville along Highway 97 and the Deschutes River" width="1120" height="940" loading="lazy">
     </div>
   </div>
 </section>
@@ -287,9 +287,6 @@ BODY = f'''
       <p class="eyebrow">Free site walk &amp; estimate</p>
       <h2 id="quote-h">Tell us about your yard</h2>
       <p class="lede">A few details and we'll call you within one business day to set up a site walk. No pressure, no boilerplate bids.</p>
-      <div class="form-ok" role="status" id="form-ok">
-        <strong>Thanks — we got it.</strong> Expect a call from a real person at Sage &amp; Stone within one business day.
-      </div>
       <!-- Lead capture: swap this form for the client's GHL form embed at launch.
            Keep the same field names so tracking stays consistent. -->
       <form id="lead-form" action="#" method="post" novalidate>
@@ -303,28 +300,27 @@ BODY = f'''
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
           </div>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="f-service">What do you need?</label>
-            <select id="f-service" name="service">
-              <option>Full landscape design &amp; build</option>
-              <option>Patio, fire pit or hardscape</option>
-              <option>Irrigation — new or repair</option>
-              <option>Ongoing maintenance</option>
-              <option>Not sure yet — advise me</option>
-            </select>
-          </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
         </div>
+        <fieldset class="field">
+          <legend>What do you need?</legend>
+          <div class="pills">
+            <label><input type="radio" name="service" value="design-build" checked><span>Design &amp; build</span></label>
+            <label><input type="radio" name="service" value="hardscape"><span>Patio or hardscape</span></label>
+            <label><input type="radio" name="service" value="irrigation"><span>Irrigation</span></label>
+            <label><input type="radio" name="service" value="maintenance"><span>Maintenance</span></label>
+            <label><input type="radio" name="service" value="not-sure"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
         <div class="field">
           <label for="f-msg">Tell us about the project</label>
           <textarea id="f-msg" name="message" placeholder="Lot size, what's there now, what you're dreaming about…"></textarea>
         </div>
         <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
-        <p class="form-note" style="margin-top:1rem">Prefer to talk? Call <a href="tel:{SITE['phone_tel']}">{SITE['phone_display']}</a> — Mon–Fri 7am–5pm.</p>
+        <p class="consent">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We only use your details to contact you about your project.</p>
+        <p class="form-note">Prefer to talk? Call <a href="tel:{SITE['phone_tel']}">{SITE['phone_display']}</a> — Mon–Fri 7am–5pm.</p>
       </form>
     </div>
     <aside class="info-card rv" aria-label="Contact details">

@@ -106,15 +106,52 @@
 
   // Lead form — placeholder handler. Swap for the GHL form embed at launch;
   // keep field names (name/phone/email/service/message) for tracking parity.
+  // On success the visitor lands on the thank-you page (a clean conversion
+  // URL for GA4/ads goals). Nothing is transmitted in this demo build.
   var form = document.getElementById("lead-form");
-  var ok = document.getElementById("form-ok");
-  if (form && ok) {
+  if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      ok.classList.add("show");
-      form.hidden = true;
-      ok.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.location.href = "thank-you.html";
+    });
+  }
+
+  // Cookie banner. No analytics load unless the visitor allows them —
+  // wire the GA4/GTM snippet behind the "granted" choice at launch.
+  var ck = document.getElementById("cookie");
+  if (ck) {
+    var choice = null;
+    try { choice = localStorage.getItem("ss-consent"); } catch (err) {}
+    var settle = function (val) {
+      try { localStorage.setItem("ss-consent", val); } catch (err) {}
+      ck.classList.remove("show");
+      setTimeout(function () { ck.hidden = true; }, 400);
+    };
+    if (!choice) {
+      ck.hidden = false;
+      setTimeout(function () { ck.classList.add("show"); }, 1400);
+    }
+    document.getElementById("ck-accept").addEventListener("click", function () { settle("granted"); });
+    document.getElementById("ck-decline").addEventListener("click", function () { settle("denied"); });
+  }
+
+  // Floating chat launcher (GHL webchat mounts in the popover at launch).
+  var chat = document.getElementById("chat");
+  if (chat) {
+    var pop = document.getElementById("chat-pop");
+    var cbtn = chat.querySelector(".chat-btn");
+    var setChat = function (open) {
+      chat.classList.toggle("open", open);
+      pop.hidden = !open;
+      cbtn.setAttribute("aria-expanded", String(open));
+    };
+    cbtn.addEventListener("click", function () { setChat(pop.hidden); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !pop.hidden) { setChat(false); cbtn.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!pop.hidden && !chat.contains(e.target)) setChat(false);
     });
   }
 })();
