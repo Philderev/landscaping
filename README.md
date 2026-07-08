@@ -61,4 +61,6 @@ sitemap.xml · robots.txt · site.webmanifest
   `philderev.github.io/landscaping/` with the production domain at deploy.
 
 Business details (name, address, phone, reviews) are fictional placeholders
-created for this demonstration build.
+created for this demonstration build. Photography sourced from Pexels under
+the Pexels license (free for commercial use, no attribution required); hero
+background video provided by the client and re-encoded for web delivery.

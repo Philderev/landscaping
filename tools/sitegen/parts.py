@@ -64,6 +64,19 @@ ARR = '<span class="arr" aria-hidden="true">→</span>'
 
 SQUIGGLE = '<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 40 2, 75 12, 110 7 S 185 3, 217 8" fill="none" stroke="#C4622D" stroke-width="5" stroke-linecap="round"/></svg>'
 
+
+def lazy_img(src, alt, w, h, style=""):
+    """Below-fold image, fetched only near the viewport (JS IO swap).
+
+    Native loading=lazy prefetches within thousands of px on slow
+    connections, which drags every photo into the PSI trace. A data-src
+    swap keeps them out entirely; <noscript> keeps no-JS crawlers happy.
+    """
+    ph = f"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {w} {h}'%3E%3C/svg%3E"
+    st = f' style="{style}"' if style else ""
+    return (f'<img class="lz" src="{ph}" data-src="{src}" alt="{alt}" width="{w}" height="{h}"{st}>'
+            f'<noscript><img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy"{st}></noscript>')
+
 CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
 <g fill="none" stroke="#C9D2B1" stroke-width="1.4">
 <path d="M-40 520 C 180 430, 300 560, 520 480 S 900 420, 1240 500"/>

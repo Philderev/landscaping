@@ -1,5 +1,5 @@
 # Homepage body content.
-from parts import SITE, AREA_PAGES, ICON_PIN, ICON_PHONE, ICON_MAIL, ICON_CLOCK, ICON_CHECK, STAR, ARR, SQUIGGLE, CONTOURS
+from parts import SITE, AREA_PAGES, ICON_PIN, ICON_PHONE, ICON_MAIL, ICON_CLOCK, ICON_CHECK, STAR, ARR, SQUIGGLE, CONTOURS, lazy_img
 
 R = ""  # root prefix for index
 
@@ -7,29 +7,29 @@ SERVICES = [
     {
         "slug": "landscape-design-build",
         "name": "Landscape Design &amp; Build",
-        "img": "ill-design.svg",
-        "alt": "Illustration of a landscape plan drawing with plant symbols and a sage sprig",
+        "img": "svc-design.webp",
+        "alt": "Landscape designer pointing at a color site plan on a laptop, concept drawings spread on the desk",
         "blurb": "From the first site walk to the final walkthrough — native planting plans, boulder placement, and outdoor rooms designed around how you actually live.",
     },
     {
         "slug": "hardscaping-outdoor-living",
         "name": "Hardscaping &amp; Outdoor Living",
-        "img": "ill-hardscape.svg",
-        "alt": "Illustration of a paver patio with a basalt fire bowl and flames",
+        "img": "svc-hardscape.webp",
+        "alt": "Paver patio with a stone fire pit, seat walls and Adirondack chairs behind a brick home",
         "blurb": "Paver patios, basalt fire pits, retaining walls, and pergolas — built on proper base so they hold their line through every freeze and thaw.",
     },
     {
         "slug": "water-wise-irrigation",
         "name": "Water-Wise Irrigation",
-        "img": "ill-irrigation.svg",
-        "alt": "Illustration of a drip irrigation emitter watering a young plant under the sun",
+        "img": "svc-irrigation.webp",
+        "alt": "Irrigation sprinkler watering a green lawn with backlit water droplets catching the sun",
         "blurb": "Drip zones, smart controllers, and hydrozoning that keep landscapes thriving on a high-desert water budget — not in spite of it.",
     },
     {
         "slug": "landscape-maintenance",
         "name": "Year-Round Maintenance",
-        "img": "ill-maintenance.svg",
-        "alt": "Illustration of pruning shears trimming a shaped evergreen shrub",
+        "img": "svc-maintenance.webp",
+        "alt": "Gardener shaping a shrub with long-handled hedge shears",
         "blurb": "Seasonal pruning, fertility programs, fall blowouts, and spring start-ups — from crews who know bitterbrush from bindweed.",
     },
 ]
@@ -67,7 +67,7 @@ def _svc_cards():
     out = []
     for s in SERVICES:
         out.append(f'''<a class="svc-card rv" href="services/{s['slug']}.html">
-  <div class="svc-art"><img src="assets/img/{s['img']}" alt="{s['alt']}" width="480" height="285" loading="lazy"></div>
+  <div class="svc-art">{lazy_img(f"assets/img/{s['img']}", s['alt'], 960, 570)}</div>
   <div class="svc-body">
     <h3>{s['name']}</h3>
     <p>{s['blurb']}</p>
@@ -209,7 +209,7 @@ BODY = f'''
     </div>
     <div class="proj-grid">
       <article class="proj rv">
-        <img src="assets/img/proj-firecourt.svg" alt="Stylized illustration of a basalt fire court terrace at dusk with mountain views" width="480" height="360" loading="lazy">
+        {lazy_img("assets/img/proj-firecourt.webp", "Evening patio with a round stone fire pit, curved outdoor seating and Adirondack chairs under pines", 960, 720)}
         <div class="proj-body">
           <h3>Shevlin Ridge Fire Court</h3>
           <p>A sloped, unusable back lot became a two-level basalt terrace with a gas fire bowl and unbroken Cascade views.</p>
@@ -217,7 +217,7 @@ BODY = f'''
         </div>
       </article>
       <article class="proj rv">
-        <img src="assets/img/proj-meadow.svg" alt="Stylized illustration of a native meadow garden with bunchgrasses and wildflowers" width="480" height="360" loading="lazy">
+        {lazy_img("assets/img/proj-meadow.webp", "Meadow planting in bloom with pink cosmos, cornflowers and coreopsis among fine grasses", 960, 720)}
         <div class="proj-body">
           <h3>Sisters Meadow Revival</h3>
           <p>Half an acre of thirsty turf replaced with fescue meadow, penstemon drifts, and a decomposed-granite path — water use down 60%.</p>
@@ -225,7 +225,7 @@ BODY = f'''
         </div>
       </article>
       <article class="proj rv">
-        <img src="assets/img/proj-courtyard.svg" alt="Stylized illustration of a modern courtyard with pavers, a water feature and ornamental grasses" width="480" height="360" loading="lazy">
+        {lazy_img("assets/img/proj-courtyard.webp", "Modern courtyard with a steel pergola, wood deck and concrete dining table beside clipped hedges", 960, 720)}
         <div class="proj-body">
           <h3>Old Mill Courtyard</h3>
           <p>A narrow townhome yard turned into a private courtyard: porcelain pavers, a basalt-column bubbler, and evening lighting.</p>
@@ -257,7 +257,7 @@ BODY = f'''
       </ul>
     </div>
     <div class="map-card rv">
-      <img src="assets/img/map-central-oregon.webp" alt="Stylized map of Central Oregon showing the Sage &amp; Stone service area: Bend, Redmond, Sisters, Tumalo, Sunriver, La Pine, Powell Butte and Prineville along Highway 97 and the Deschutes River" width="1120" height="940" loading="lazy">
+      {lazy_img("assets/img/map-central-oregon.webp", "Stylized map of Central Oregon showing the Sage &amp; Stone service area: Bend, Redmond, Sisters, Tumalo, Sunriver, La Pine, Powell Butte and Prineville along Highway 97 and the Deschutes River", 1120, 940)}
     </div>
   </div>
 </section>

@@ -96,9 +96,10 @@ ul{padding-left:1.2em}
 .hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;
   min-height:min(94vh,980px);min-height:min(94svh,980px);color:var(--cream);overflow:hidden;background:var(--pine-950)}
 .hero-media{position:absolute;inset:0;z-index:-2}
-.hero-media video{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.hero-media video{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(178deg,rgba(15,26,20,.72) 0%,rgba(15,26,20,.38) 42%,rgba(13,23,17,.55) 68%,rgba(11,20,15,.88) 100%)}
+  background:linear-gradient(100deg,rgba(14,42,27,.92) 0%,rgba(14,42,27,.66) 40%,rgba(16,46,30,.32) 70%,rgba(12,36,23,.5) 100%),
+    linear-gradient(180deg,rgba(9,28,18,.55) 0%,rgba(9,28,18,.18) 42%,rgba(7,24,15,.85) 100%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 .hero-in{position:relative;width:100%;padding-top:9.5rem}

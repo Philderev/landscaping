@@ -10,7 +10,7 @@ PAGES = {
         "h1": "Landscape design &amp; build, drawn for the high desert",
         "lede": "One team takes your landscape from first sketch to final walkthrough — a scaled design, a fixed line-item price, and a build crew that treats your lot like the last one they'll ever sign.",
         "banner": "ill-design.svg",
-        "banner_alt": "Illustration of a landscape plan drawing with plant symbols and a sage sprig",
+        "banner_alt": "Landscape designer pointing at a color site plan on a laptop, concept drawings spread on the desk",
         "included_h": "What a design-build project includes",
         "included": [
             "Free on-site walk and consultation — sun, wind, soil, drainage, views, deer pressure",
@@ -43,7 +43,7 @@ PAGES = {
         "h1": "Hardscapes that hold their line through freeze and thaw",
         "lede": "Patios, fire courts, walls, and pergolas built on honest base prep — because in a town that freezes 180 nights a year, what's under the pavers matters more than the pavers.",
         "banner": "ill-hardscape.svg",
-        "banner_alt": "Illustration of a paver patio with a basalt fire bowl and flames",
+        "banner_alt": "Paver patio with a stone fire pit, seat walls and Adirondack chairs behind a brick home",
         "included_h": "What we build",
         "included": [
             "Paver and natural-stone patios on compacted, geotextile-reinforced base",
@@ -75,7 +75,7 @@ PAGES = {
         "h1": "Irrigation built for a 12-inch-of-rain climate",
         "lede": "Drip zones, smart controllers, and hydrozoning that deliver water where roots actually are — most conversions cut outdoor water use 40–60% while the landscape looks better, not worse.",
         "banner": "ill-irrigation.svg",
-        "banner_alt": "Illustration of a drip irrigation emitter watering a young plant under the sun",
+        "banner_alt": "Irrigation sprinkler watering a green lawn with backlit water droplets catching the sun",
         "included_h": "Irrigation services",
         "included": [
             "New system design and installation — drip, rotary, and MP rotator zones",
@@ -106,7 +106,7 @@ PAGES = {
         "h1": "Care that keeps a landscape getting better",
         "lede": "A high-desert landscape isn't finished at install — it's established over seasons. Our maintenance calendar keeps plantings thriving, systems tuned, and weekends yours.",
         "banner": "ill-maintenance.svg",
-        "banner_alt": "Illustration of pruning shears trimming a shaped evergreen shrub",
+        "banner_alt": "Gardener shaping a shrub with long-handled hedge shears",
         "included_h": "What's on the calendar",
         "included": [
             "Spring clean-ups: cutbacks, bed refresh, pre-emergent, mulch top-up",

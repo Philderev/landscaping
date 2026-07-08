@@ -241,9 +241,30 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
       ["pointerdown", "pointermove", "touchstart", "scroll", "keydown"].forEach(function (ev) {
         window.addEventListener(ev, start, { passive: true, once: false });
       });
-      var arm = function () { setTimeout(start, 6000); };
+      var arm = function () { setTimeout(start, 10000); };
       if (document.readyState === "complete") arm();
       else window.addEventListener("load", arm);
+    }
+  }
+
+  // Lazy images: swap data-src in only when near the viewport. Native
+  // loading=lazy prefetches within thousands of px on slow connections,
+  // which drags every photo into the initial load.
+  var lazyImgs = document.querySelectorAll("img.lz[data-src]");
+  if (lazyImgs.length) {
+    if ("IntersectionObserver" in window) {
+      var lzio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            en.target.src = en.target.dataset.src;
+            en.target.removeAttribute("data-src");
+            lzio.unobserve(en.target);
+          }
+        });
+      }, { rootMargin: "400px 0px" });
+      lazyImgs.forEach(function (img) { lzio.observe(img); });
+    } else {
+      lazyImgs.forEach(function (img) { img.src = img.dataset.src; });
     }
   }
 
@@ -404,7 +425,9 @@ sitemap.xml · robots.txt · site.webmanifest
   `philderev.github.io/landscaping/` with the production domain at deploy.
 
 Business details (name, address, phone, reviews) are fictional placeholders
-created for this demonstration build.
+created for this demonstration build. Photography sourced from Pexels under
+the Pexels license (free for commercial use, no attribution required); hero
+background video provided by the client and re-encoded for web delivery.
 """)
 
 print("build complete.")

@@ -1,5 +1,5 @@
 # Service-area pages — one per town, each with genuinely local content.
-from parts import SITE, AREA_PAGES, ICON_CHECK, ARR
+from parts import SITE, AREA_PAGES, ICON_CHECK, ARR, lazy_img
 
 NAME = dict(AREA_PAGES)
 
@@ -200,7 +200,7 @@ def body(slug):
         <a class="btn btn-primary" href="../index.html#quote">Request my site walk {ARR}</a>
         <a class="btn btn-ghost" href="tel:{SITE['phone_tel']}">Call {SITE['phone_display']}</a>
         <hr>
-        <img src="../assets/img/map-central-oregon.webp" alt="Map of the Sage &amp; Stone service area across Central Oregon" width="1120" height="940" loading="lazy" style="border-radius:12px">
+        {lazy_img("../assets/img/map-central-oregon.webp", "Map of the Sage &amp; Stone service area across Central Oregon", 1120, 940, style="border-radius:12px")}
         <hr>
         <h4 style="margin:0 0 .8rem;font-family:var(--serif);font-weight:500">Nearby areas</h4>
         <ul class="side-links">{near}</ul>
