@@ -445,6 +445,7 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
   .nav-item>a .car{display:none}
   .sub{position:static;translate:none;opacity:1;visibility:visible;box-shadow:none;border:none;background:transparent;
     padding:.15rem 0 .55rem .95rem;min-width:0}
+  .nav-item:hover .sub,.nav-item:focus-within .sub{translate:none}
   .sub.cols{min-width:0}
   .sub a{white-space:normal;padding:.55rem 0;border-bottom:1px solid rgba(27,46,36,.06);border-radius:0;font-size:.95rem}
   .cookie{left:.8rem;right:calc(.9rem + 66px);bottom:.9rem;max-width:none}
