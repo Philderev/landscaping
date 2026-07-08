@@ -46,3 +46,19 @@ sitemap.xml · robots.txt · site.webmanifest
 
 Business details (name, address, phone, reviews) are fictional placeholders
 created for this demonstration build.
+
+## Tooling (`tools/`)
+
+The site is plain static files — nothing here is required to serve it. But every
+page and asset was generated from code, and the generators are included:
+
+- `tools/sitegen/build.py` — assembles all HTML pages (shared header/footer,
+  inlined + minified CSS, JSON-LD). Edit content in `pages_*.py`, styles in
+  `css.py`, business data in `parts.py`, then run `python tools/sitegen/build.py`.
+- `tools/render_video.py` — renders the 360 frames of the hero background
+  animation with Pillow (12 s seamless loop; encode with ffmpeg to MP4/WebM).
+- `tools/gen_assets.py` — hero poster, Open Graph image, favicon + touch icons.
+
+Requires Python 3 with `pillow`; video encode needs ffmpeg (H.264 `-profile:v
+main -pix_fmt yuv420p -movflags +faststart` and VP9 args are in the README of
+the video files' git history).
