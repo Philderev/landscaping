@@ -29,36 +29,36 @@ original animated hero video rendered from code).
 ```
 index.html                     homepage
 services/*.html                one page per service (4)
+areas/*.html                   one page per service area (8), each with local content
+privacy.html · terms.html      legal pages (linked from footer, form, cookie banner)
+thank-you.html                 post-submit conversion page (noindex)
 404.html                       styled not-found page (GitHub Pages picks it up)
 assets/fonts/                  Fraunces subset (OFL licensed — see OFL.txt)
-assets/img/                    logo, favicons, illustrations, map (SVG) + og image
+assets/img/                    logo, favicons, illustrations, map + og image
 assets/video/                  hero.webm / hero.mp4 / poster
 sitemap.xml · robots.txt · site.webmanifest
 ```
+
+## UX components
+
+- **Nav dropdowns** for Services and Service Areas (hover + keyboard focus on
+  desktop, expanded groups in the mobile menu).
+- **Cookie banner** — consent-first: no analytics unless the visitor allows
+  them; choice stored in `localStorage` (`ss-consent`). Wire GA4/GTM behind the
+  `granted` value at launch.
+- **Floating chat launcher** — call/text/email popover; the GHL webchat widget
+  mounts inside it at launch (marked with a comment).
+- **Lead form** → redirects to `thank-you.html`, a clean conversion URL for
+  GA4 / ads goals.
 
 ## Launch notes
 
 - The lead form is a styled placeholder — swap in the GHL form embed at launch
   (marked with a comment in `index.html`; field names are ready for tracking).
-- GA4 / GTM snippets go just before `</head>` on every page when IDs are provided.
+- GA4 / GTM snippets go just before `</head>` on every page when IDs are
+  provided — load them only after cookie consent (`ss-consent === "granted"`).
 - `sitemap.xml`, canonicals, and og:urls point at the staging URL; replace
   `philderev.github.io/landscaping/` with the production domain at deploy.
 
 Business details (name, address, phone, reviews) are fictional placeholders
 created for this demonstration build.
-
-## Tooling (`tools/`)
-
-The site is plain static files — nothing here is required to serve it. But every
-page and asset was generated from code, and the generators are included:
-
-- `tools/sitegen/build.py` — assembles all HTML pages (shared header/footer,
-  inlined + minified CSS, JSON-LD). Edit content in `pages_*.py`, styles in
-  `css.py`, business data in `parts.py`, then run `python tools/sitegen/build.py`.
-- `tools/render_video.py` — renders the 360 frames of the hero background
-  animation with Pillow (12 s seamless loop; encode with ffmpeg to MP4/WebM).
-- `tools/gen_assets.py` — hero poster, Open Graph image, favicon + touch icons.
-
-Requires Python 3 with `pillow`; video encode needs ffmpeg (H.264 `-profile:v
-main -pix_fmt yuv420p -movflags +faststart` and VP9 args are in the README of
-the video files' git history).

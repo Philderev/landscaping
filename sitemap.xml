@@ -2,27 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://philderev.github.io/landscaping/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://philderev.github.io/landscaping/services/landscape-design-build.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://philderev.github.io/landscaping/services/hardscaping-outdoor-living.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://philderev.github.io/landscaping/services/water-wise-irrigation.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://philderev.github.io/landscaping/services/landscape-maintenance.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/bend.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/redmond.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/sisters.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/tumalo.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/sunriver.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/la-pine.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/powell-butte.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/areas/prineville.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/privacy.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://philderev.github.io/landscaping/terms.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>

@@ -9,21 +9,23 @@ def minify_css(css):
     css = re.sub(r"\n+", "", css)
     css = re.sub(r"  +", " ", css)
     return css.strip()
-from parts import SITE, head, header, footer, business_schema, breadcrumb_schema
+from parts import SITE, AREA_PAGES, head, header, footer, business_schema, breadcrumb_schema
 import pages_index
 import pages_services
+import pages_areas
+import pages_legal
 
 ROOT = r"E:\templates\landscaping website template"
 SP = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # scratchpad
-DATE = "2026-07-08"
+DATE = "2026-07-09"
 
 
-def page(*, title, desc, canonical_path, root, body, active="", schemas=None, preload_poster=False):
+def page(*, title, desc, canonical_path, root, body, active="", schemas=None, preload_poster=False, noindex=False):
     css = minify_css(CSS.replace("{R}", root))
     return f'''<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-{head(title=title, desc=desc, canonical_path=canonical_path, root=root, extra_schema=schemas, preload_poster=preload_poster)}
+{head(title=title, desc=desc, canonical_path=canonical_path, root=root, extra_schema=schemas, preload_poster=preload_poster, noindex=noindex)}
 <style>{css}</style>
 </head>
 <body>
@@ -69,9 +71,50 @@ for slug in pages_services.ORDER:
         canonical_path=f"services/{slug}.html",
         root="../",
         body=pages_services.body(slug),
-        active="services",
+        active=f"services:{slug}",
         schemas=schemas,
     ))
+
+# ------------------------------------------------------------------ areas
+for slug, name in AREA_PAGES:
+    a = pages_areas.AREAS[slug]
+    schemas = [breadcrumb_schema([
+        ("Home", ""),
+        (f"Landscaping in {name}, Oregon", None),
+    ])]
+    write(f"areas/{slug}.html", page(
+        title=a["title"],
+        desc=a["desc"],
+        canonical_path=f"areas/{slug}.html",
+        root="../",
+        body=pages_areas.body(slug),
+        active=f"areas:{slug}",
+        schemas=schemas,
+    ))
+
+# ------------------------------------------------------------------ legal + thank-you
+write("privacy.html", page(
+    title="Privacy Policy | Sage & Stone Landscape Co.",
+    desc="How Sage & Stone Landscape Co. handles your information: what we collect through our quote form, how consent-based analytics work, and the choices you have.",
+    canonical_path="privacy.html",
+    root="",
+    body=pages_legal.PRIVACY,
+))
+write("terms.html", page(
+    title="Terms of Service | Sage & Stone Landscape Co.",
+    desc="Terms for using the Sage & Stone Landscape Co. website: estimates and proposals, scheduling, our two-season workmanship warranty, payments, and Oregon licensing.",
+    canonical_path="terms.html",
+    root="",
+    body=pages_legal.TERMS,
+))
+write("thank-you.html", page(
+    title="Request received | Sage & Stone Landscape Co.",
+    desc="Thanks for your site walk request — a real person at Sage & Stone will call you within one business day.",
+    canonical_path="thank-you.html",
+    root="",
+    body=pages_legal.THANKS,
+    noindex=True,
+))
 
 # ------------------------------------------------------------------ 404
 err_body = '''
@@ -101,7 +144,10 @@ Allow: /
 Sitemap: {SITE['base']}sitemap.xml
 """)
 
-urls = [("", "1.0")] + [(f"services/{s}.html", "0.8") for s in pages_services.ORDER]
+urls = ([("", "1.0")]
+        + [(f"services/{s}.html", "0.8") for s in pages_services.ORDER]
+        + [(f"areas/{s}.html", "0.7") for s, _ in AREA_PAGES]
+        + [("privacy.html", "0.3"), ("terms.html", "0.3")])
 entries = "\n".join(
     f"""  <url>
     <loc>{SITE['base']}{u}</loc>
@@ -238,15 +284,52 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
 
   // Lead form — placeholder handler. Swap for the GHL form embed at launch;
   // keep field names (name/phone/email/service/message) for tracking parity.
+  // On success the visitor lands on the thank-you page (a clean conversion
+  // URL for GA4/ads goals). Nothing is transmitted in this demo build.
   var form = document.getElementById("lead-form");
-  var ok = document.getElementById("form-ok");
-  if (form && ok) {
+  if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      ok.classList.add("show");
-      form.hidden = true;
-      ok.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.location.href = "thank-you.html";
+    });
+  }
+
+  // Cookie banner. No analytics load unless the visitor allows them —
+  // wire the GA4/GTM snippet behind the "granted" choice at launch.
+  var ck = document.getElementById("cookie");
+  if (ck) {
+    var choice = null;
+    try { choice = localStorage.getItem("ss-consent"); } catch (err) {}
+    var settle = function (val) {
+      try { localStorage.setItem("ss-consent", val); } catch (err) {}
+      ck.classList.remove("show");
+      setTimeout(function () { ck.hidden = true; }, 400);
+    };
+    if (!choice) {
+      ck.hidden = false;
+      setTimeout(function () { ck.classList.add("show"); }, 1400);
+    }
+    document.getElementById("ck-accept").addEventListener("click", function () { settle("granted"); });
+    document.getElementById("ck-decline").addEventListener("click", function () { settle("denied"); });
+  }
+
+  // Floating chat launcher (GHL webchat mounts in the popover at launch).
+  var chat = document.getElementById("chat");
+  if (chat) {
+    var pop = document.getElementById("chat-pop");
+    var cbtn = chat.querySelector(".chat-btn");
+    var setChat = function (open) {
+      chat.classList.toggle("open", open);
+      pop.hidden = !open;
+      cbtn.setAttribute("aria-expanded", String(open));
+    };
+    cbtn.addEventListener("click", function () { setChat(pop.hidden); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !pop.hidden) { setChat(false); cbtn.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!pop.hidden && !chat.contains(e.target)) setChat(false);
     });
   }
 })();
@@ -289,18 +372,34 @@ original animated hero video rendered from code).
 ```
 index.html                     homepage
 services/*.html                one page per service (4)
+areas/*.html                   one page per service area (8), each with local content
+privacy.html · terms.html      legal pages (linked from footer, form, cookie banner)
+thank-you.html                 post-submit conversion page (noindex)
 404.html                       styled not-found page (GitHub Pages picks it up)
 assets/fonts/                  Fraunces subset (OFL licensed — see OFL.txt)
-assets/img/                    logo, favicons, illustrations, map (SVG) + og image
+assets/img/                    logo, favicons, illustrations, map + og image
 assets/video/                  hero.webm / hero.mp4 / poster
 sitemap.xml · robots.txt · site.webmanifest
 ```
+
+## UX components
+
+- **Nav dropdowns** for Services and Service Areas (hover + keyboard focus on
+  desktop, expanded groups in the mobile menu).
+- **Cookie banner** — consent-first: no analytics unless the visitor allows
+  them; choice stored in `localStorage` (`ss-consent`). Wire GA4/GTM behind the
+  `granted` value at launch.
+- **Floating chat launcher** — call/text/email popover; the GHL webchat widget
+  mounts inside it at launch (marked with a comment).
+- **Lead form** → redirects to `thank-you.html`, a clean conversion URL for
+  GA4 / ads goals.
 
 ## Launch notes
 
 - The lead form is a styled placeholder — swap in the GHL form embed at launch
   (marked with a comment in `index.html`; field names are ready for tracking).
-- GA4 / GTM snippets go just before `</head>` on every page when IDs are provided.
+- GA4 / GTM snippets go just before `</head>` on every page when IDs are
+  provided — load them only after cookie consent (`ss-consent === "granted"`).
 - `sitemap.xml`, canonicals, and og:urls point at the staging URL; replace
   `philderev.github.io/landscaping/` with the production domain at deploy.
 

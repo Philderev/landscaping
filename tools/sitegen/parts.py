@@ -20,6 +20,25 @@ SITE = {
     "ccb": "CCB #231188",
 }
 
+# slug, display name — order matters (nav dropdown, footer, cross-links)
+AREA_PAGES = [
+    ("bend", "Bend"),
+    ("redmond", "Redmond"),
+    ("sisters", "Sisters"),
+    ("tumalo", "Tumalo"),
+    ("sunriver", "Sunriver"),
+    ("la-pine", "La Pine"),
+    ("powell-butte", "Powell Butte"),
+    ("prineville", "Prineville"),
+]
+
+SERVICE_PAGES = [
+    ("landscape-design-build", "Landscape Design &amp; Build"),
+    ("hardscaping-outdoor-living", "Hardscaping &amp; Outdoor Living"),
+    ("water-wise-irrigation", "Water-Wise Irrigation"),
+    ("landscape-maintenance", "Year-Round Maintenance"),
+]
+
 # The logo mark: a trail cairn (three stacked stones) in front of a clay sun,
 # with a sage sprig. Drawn once, reused inline everywhere via currentColor-ish
 # fixed palette (works on light and dark backgrounds).
@@ -60,7 +79,7 @@ CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="
 </g></svg>'''
 
 
-def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=None, preload_poster=False):
+def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=None, preload_poster=False, noindex=False):
     """Build the full <head> — inline CSS is appended by build.py."""
     canon = SITE["base"] + canonical_path
     og_img = SITE["base"] + "assets/img/og-home.jpg"
@@ -78,7 +97,7 @@ def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=N
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canon}">
-<meta name="theme-color" content="#12211A">
+{'<meta name="robots" content="noindex,nofollow">' if noindex else ''}<meta name="theme-color" content="#12211A">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{SITE['name']}">
 <meta property="og:title" content="{title}">
@@ -103,8 +122,23 @@ def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=N
 
 
 def header(root, active=""):
-    def cur(k):
-        return ' aria-current="page"' if k == active else ""
+    """active: "" | "services" | "areas" | "services:<slug>" | "areas:<slug>"."""
+    group, _, slug = active.partition(":")
+
+    def top(k):
+        return ' aria-current="page"' if group == k and not slug else ""
+
+    def sub(k, s):
+        return ' aria-current="page"' if group == k and slug == s else ""
+
+    svc_items = "\n".join(
+        f'<li><a href="{root}services/{s}.html"{sub("services", s)}>{n}</a></li>'
+        for s, n in SERVICE_PAGES
+    )
+    area_items = "\n".join(
+        f'<li><a href="{root}areas/{s}.html"{sub("areas", s)}>{n}</a></li>'
+        for s, n in AREA_PAGES
+    )
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="site-head" id="top">
   <div class="wrap head-in">
@@ -116,10 +150,20 @@ def header(root, active=""):
       <span></span><span></span><span></span>
     </button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="{root}index.html#services"{cur('services')}>Services</a>
+      <div class="nav-item">
+        <a href="{root}index.html#services"{top('services')}>Services <span class="car" aria-hidden="true">▾</span></a>
+        <ul class="sub">
+          {svc_items}
+        </ul>
+      </div>
+      <div class="nav-item">
+        <a href="{root}index.html#areas"{top('areas')}>Service Areas <span class="car" aria-hidden="true">▾</span></a>
+        <ul class="sub cols">
+          {area_items}
+        </ul>
+      </div>
       <a href="{root}index.html#work">Our Work</a>
       <a href="{root}index.html#about">Why High Desert</a>
-      <a href="{root}index.html#areas">Service Area</a>
       <a class="nav-phone" href="tel:{SITE['phone_tel']}" aria-label="Call {SITE['phone_display']}">{SITE['phone_display']}</a>
       <a class="btn btn-primary" href="{root}index.html#quote">Get a quote</a>
     </nav>
@@ -129,14 +173,8 @@ def header(root, active=""):
 
 def footer(root):
     year = 2026
-    svc = [
-        ("landscape-design-build", "Landscape Design &amp; Build"),
-        ("hardscaping-outdoor-living", "Hardscaping &amp; Outdoor Living"),
-        ("water-wise-irrigation", "Water-Wise Irrigation"),
-        ("landscape-maintenance", "Year-Round Maintenance"),
-    ]
-    svc_links = "\n".join(f'<li><a href="{root}services/{s}.html">{n}</a></li>' for s, n in svc)
-    areas = "\n".join(f"<li>{a}, Oregon</li>" for a in SITE["areas"][:6])
+    svc_links = "\n".join(f'<li><a href="{root}services/{s}.html">{n}</a></li>' for s, n in SERVICE_PAGES)
+    areas = "\n".join(f'<li><a href="{root}areas/{s}.html">{n}, Oregon</a></li>' for s, n in AREA_PAGES)
     return f'''<footer class="site-foot">
   <div class="wrap foot-grid">
     <div class="foot-brand">
@@ -168,9 +206,41 @@ def footer(root):
   </div>
   <div class="wrap foot-legal">
     <span>© {year} {SITE['name']} · Bend, Oregon</span>
+    <nav aria-label="Legal">
+      <a href="{root}privacy.html">Privacy Policy</a>
+      <a href="{root}terms.html">Terms of Service</a>
+    </nav>
     <span>Oregon {SITE['lcb']} · {SITE['ccb']} · Licensed, bonded &amp; insured</span>
   </div>
 </footer>
+<div class="cookie" id="cookie" role="region" aria-label="Cookie notice" hidden>
+  <p><strong>Cookies, plainly.</strong> We'd like to use basic analytics to see how the site is used — no ad tracking, no data sales. Decline and everything still works. <a href="{root}privacy.html">Privacy policy</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-primary" id="ck-accept">Allow analytics</button>
+    <button type="button" class="btn btn-ghost" id="ck-decline">Decline</button>
+  </div>
+</div>
+<div class="chat" id="chat">
+  <div class="chat-pop" id="chat-pop" hidden>
+    <div class="chat-head">
+      {logo_mark(stone="#F4EEE3", size=34)}
+      <div><b>Sage &amp; Stone</b><span>Typically replies within the hour, Mon–Fri</span></div>
+    </div>
+    <div class="chat-body">
+      <p>Got a yard question? Reach a real person — no bots, no phone trees.</p>
+      <div class="chat-links">
+        <a href="tel:{SITE['phone_tel']}">{ICON_PHONE}Call {SITE['phone_display']}</a>
+        <a href="sms:{SITE['phone_tel']}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 5.9 2 10.7c0 2.8 1.5 5.2 3.9 6.8-.1.9-.5 2.3-1.7 3.5 0 0 2.6-.2 4.7-1.7.99.25 2.03.4 3.1.4 5.5 0 10-3.9 10-8.7S17.5 2 12 2Zm-5 9.9a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/></svg>Text us</a>
+        <a href="mailto:{SITE['email']}">{ICON_MAIL}{SITE['email']}</a>
+      </div>
+      <!-- GHL webchat widget mounts here at launch -->
+    </div>
+  </div>
+  <button type="button" class="chat-btn" aria-expanded="false" aria-controls="chat-pop" aria-label="Open contact options">
+    <svg class="ic-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 5.9 2 10.7c0 2.8 1.5 5.2 3.9 6.8-.1.9-.5 2.3-1.7 3.5 0 0 2.6-.2 4.7-1.7.99.25 2.03.4 3.1.4 5.5 0 10-3.9 10-8.7S17.5 2 12 2Zm-5 9.9a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/></svg>
+    <svg class="ic-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 5 12 10.6 17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4L12 13.4 6.4 19 5 17.6 10.6 12 5 6.4Z"/></svg>
+  </button>
+</div>
 <script src="{root}assets/js/main.js" defer></script>'''
 
 
