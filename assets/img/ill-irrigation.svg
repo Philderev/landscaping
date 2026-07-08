@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570">
+<rect width="960" height="570" fill="#EAE1CF"/>
+<circle cx="800" cy="112" r="56" fill="#D9A45B"/>
+<g stroke="#D9A45B" stroke-width="5" stroke-linecap="round" opacity=".7">
+<path d="M800 28 v-14"/><path d="M884 112 h14"/><path d="M860 52 l10 -10"/><path d="M860 172 l10 10"/>
+</g>
+<!-- drip line -->
+<path d="M-20 150 C 200 130, 420 170, 640 150" fill="none" stroke="#1B2E24" stroke-width="10" stroke-linecap="round"/>
+<circle cx="360" cy="158" r="14" fill="#1B2E24"/>
+<rect x="352" y="164" width="16" height="18" rx="5" fill="#1B2E24"/>
+<!-- droplets -->
+<g fill="#6E9490">
+<path d="M360 224 c 10 14, 10 22, 0 28 -10 -6, -10 -14, 0 -28Z"/>
+<path d="M360 282 c 12 16, 12 26, 0 33 -12 -7, -12 -17, 0 -33Z" opacity=".85"/>
+<path d="M360 348 c 14 18, 14 30, 0 38 -14 -8, -14 -20, 0 -38Z" opacity=".7"/>
+</g>
+<!-- soil mound -->
+<path d="M120 570 C 200 470, 320 440, 480 448 S 780 480, 900 570Z" fill="#8A9B6E" opacity=".35"/>
+<path d="M180 570 C 260 492, 360 468, 480 474 S 720 500, 830 570Z" fill="#A34A22" opacity=".25"/>
+<!-- moisture arcs -->
+<g fill="none" stroke="#6E9490" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8">
+<path d="M280 500 C 330 476, 400 472, 448 486"/>
+<path d="M300 532 C 350 508, 420 504, 472 518"/>
+</g>
+<!-- young plant -->
+<g>
+<path d="M360 470 C 358 430, 362 408, 360 396" fill="none" stroke="#2E4A38" stroke-width="8" stroke-linecap="round"/>
+<g fill="#8A9B6E">
+<ellipse cx="330" cy="424" rx="26" ry="11" transform="rotate(-34 330 424)"/>
+<ellipse cx="392" cy="410" rx="27" ry="11.5" transform="rotate(28 392 410)"/>
+<ellipse cx="336" cy="386" rx="22" ry="9.5" transform="rotate(-44 336 386)"/>
+<ellipse cx="386" cy="374" rx="22" ry="9.5" transform="rotate(38 386 374)"/>
+</g>
+<ellipse cx="360" cy="372" rx="12" ry="18" fill="#2E4A38"/>
+</g>
+<!-- bunchgrass right -->
+<g stroke="#2E4A38" stroke-width="6" stroke-linecap="round" fill="none">
+<path d="M700 540 C 690 490, 688 460, 696 430"/>
+<path d="M716 540 C 716 484, 720 456, 734 428"/>
+<path d="M732 540 C 742 496, 752 470, 772 448"/>
+<path d="M686 540 C 672 500, 664 478, 650 460"/>
+</g>
+<g stroke="#8A9B6E" stroke-width="5" stroke-linecap="round" fill="none">
+<path d="M708 540 C 704 492, 706 468, 716 442"/>
+<path d="M724 540 C 730 500, 738 478, 754 458"/>
+</g>
+</svg>

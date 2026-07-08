@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3E5A4C"/><stop offset=".55" stop-color="#C08A56"/><stop offset="1" stop-color="#E9BC77"/>
+</linearGradient>
+</defs>
+<rect width="480" height="360" fill="url(#sky)"/>
+<circle cx="330" cy="150" r="34" fill="#F6DCA4"/>
+<!-- mountains -->
+<path d="M-10 200 L60 130 L110 176 L170 108 L240 186 L310 128 L370 178 L430 140 L490 196 L490 360 L-10 360Z" fill="#2E4A38"/>
+<path d="M52 138 L60 130 L70 139 L61 144Z M162 116 L170 108 L180 118 L170 123Z M302 136 L310 128 L320 138 L310 143Z" fill="#EFE9DC"/>
+<!-- terrace -->
+<path d="M-10 250 L490 250 L490 360 L-10 360Z" fill="#1B2E24"/>
+<g stroke="#F4EEE3" stroke-opacity=".14" stroke-width="2">
+<path d="M-10 278 H490"/><path d="M-10 310 H490"/><path d="M-10 342 H490"/>
+<path d="M90 250 L70 360"/><path d="M240 250 L240 360"/><path d="M390 250 L412 360"/>
+</g>
+<!-- fire bowl -->
+<ellipse cx="240" cy="300" rx="74" ry="15" fill="#000" opacity=".3"/>
+<path d="M180 272 a60 26 0 0 0 120 0z" fill="#12211A"/>
+<ellipse cx="240" cy="272" rx="60" ry="14" fill="#20302A"/>
+<ellipse cx="240" cy="272" rx="46" ry="10" fill="#0C1611"/>
+<path d="M240 218 c 17 17, 20 29, 8 41 -6 6, -17 7, -23 -1 -8 -12, -3 -26, 15 -40Z" fill="#C4622D"/>
+<path d="M242 236 c 9 10, 10 17, 3 23 -3 4, -10 4, -13 -1 -4 -7, -1 -13, 10 -22Z" fill="#F2C879"/>
+<circle cx="240" cy="272" r="90" fill="#D9A45B" opacity=".14"/>
+<!-- chairs -->
+<g fill="#12211A">
+<path d="M96 262 l30 -4 4 34 -6 0 -2 -12 -20 2 0 12 -6 0z"/>
+<rect x="94" y="252" width="8" height="24" rx="3" transform="rotate(-16 98 264)"/>
+<path d="M384 258 l-30 -4 -4 34 6 0 2 -12 20 2 0 12 6 0z"/>
+<rect x="378" y="248" width="8" height="24" rx="3" transform="rotate(16 382 260)"/>
+</g>
+<!-- grasses -->
+<g stroke="#12211A" stroke-width="3" stroke-linecap="round" fill="none">
+<path d="M40 340 C 34 316, 33 302, 38 288"/><path d="M52 340 C 52 314, 55 300, 62 286"/><path d="M63 340 C 68 318, 74 306, 84 296"/>
+<path d="M430 344 C 424 320, 423 306, 428 292"/><path d="M442 344 C 442 318, 445 304, 452 290"/><path d="M453 344 C 458 322, 464 310, 474 300"/>
+</g>
+</svg>

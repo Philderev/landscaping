@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360">
+<rect width="480" height="360" fill="#20302A"/>
+<!-- wall -->
+<rect width="480" height="200" fill="#1B2E24"/>
+<g stroke="#F4EEE3" stroke-opacity=".08" stroke-width="2">
+<path d="M0 50 H480"/><path d="M0 100 H480"/><path d="M0 150 H480"/>
+<path d="M120 0 V200"/><path d="M300 0 V200"/>
+</g>
+<!-- sconces -->
+<g>
+<circle cx="80" cy="86" r="7" fill="#F2C879"/><circle cx="80" cy="86" r="20" fill="#D9A45B" opacity=".22"/>
+<circle cx="400" cy="86" r="7" fill="#F2C879"/><circle cx="400" cy="86" r="20" fill="#D9A45B" opacity=".22"/>
+</g>
+<!-- paver floor -->
+<g fill="#EAE1CF" stroke="#12211A" stroke-width="3">
+<path d="M-10 200 L490 200 L490 360 L-10 360Z" fill="#F4EEE3"/>
+<path d="M-10 200 H490 M-10 250 H490 M-10 310 H490" fill="none"/>
+<path d="M100 200 L80 360 M240 200 L240 360 M380 200 L400 360" fill="none"/>
+</g>
+<!-- basalt column bubbler -->
+<g>
+<ellipse cx="240" cy="282" rx="86" ry="16" fill="#12211A"/>
+<ellipse cx="240" cy="278" rx="86" ry="16" fill="#6E9490" opacity=".5"/>
+<rect x="206" y="170" width="30" height="102" rx="6" fill="#12211A"/>
+<rect x="242" y="150" width="32" height="122" rx="6" fill="#0C1611"/>
+<rect x="180" y="196" width="24" height="76" rx="5" fill="#0C1611"/>
+<!-- water -->
+<path d="M258 150 c 3 30, 3 70, 0 118" fill="none" stroke="#6E9490" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+<path d="M222 170 c 2 24, 2 60, 0 96" fill="none" stroke="#6E9490" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+<ellipse cx="240" cy="276" rx="48" ry="8" fill="none" stroke="#6E9490" stroke-width="2.6" opacity=".8"/>
+<ellipse cx="240" cy="278" rx="66" ry="11" fill="none" stroke="#6E9490" stroke-width="2" opacity=".5"/>
+</g>
+<!-- planter with grasses -->
+<g>
+<rect x="368" y="238" width="86" height="46" rx="8" fill="#A34A22"/>
+<g stroke="#8A9B6E" stroke-width="4" stroke-linecap="round" fill="none">
+<path d="M388 238 C 380 208, 378 192, 384 174"/><path d="M404 238 C 404 204, 408 188, 418 170"/>
+<path d="M420 238 C 428 210, 436 196, 450 182"/><path d="M436 238 C 446 216, 454 206, 466 196"/>
+</g>
+</g>
+<g>
+<rect x="30 " y="246" width="70" height="38" rx="8" fill="#2E4A38"/>
+<g fill="#8A9B6E">
+<circle cx="50" cy="234" r="16"/><circle cx="72" cy="228" r="18"/><circle cx="90" cy="238" r="13"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570">
+<rect width="960" height="570" fill="#EAE1CF"/>
+<circle cx="168" cy="120" r="46" fill="#D9A45B" opacity=".85"/>
+<path d="M-20 480 C 180 430, 420 450, 640 440 S 900 430, 980 455 L980 570 L-20 570Z" fill="#C9D2B1" opacity=".6"/>
+<!-- three shrubs: wild -> being trimmed -> neat -->
+<g>
+<!-- wild shrub -->
+<g fill="#8A9B6E">
+<circle cx="180" cy="420" r="44"/><circle cx="146" cy="392" r="30"/><circle cx="216" cy="388" r="34"/>
+<circle cx="196" cy="352" r="24"/><circle cx="156" cy="356" r="20"/>
+</g>
+<rect x="172" y="452" width="16" height="36" rx="6" fill="#2E4A38"/>
+<!-- mid shrub being sheared -->
+<path d="M420 372 a72 72 0 0 1 144 0 c0 40 -32 66 -72 66 s-72 -26 -72 -66Z" fill="#8A9B6E"/>
+<path d="M420 372 a72 72 0 0 1 144 0 c0 40 -32 66 -72 66 s-72 -26 -72 -66Z" fill="#2E4A38" opacity=".25"/>
+<circle cx="492" cy="368" r="60" fill="#8A9B6E"/>
+<rect x="482" y="436" width="18" height="42" rx="7" fill="#2E4A38"/>
+<!-- clippings falling -->
+<g fill="#2E4A38" opacity=".8">
+<ellipse cx="574" cy="330" rx="9" ry="4" transform="rotate(24 574 330)"/>
+<ellipse cx="592" cy="366" rx="8" ry="3.6" transform="rotate(-18 592 366)"/>
+<ellipse cx="580" cy="404" rx="8" ry="3.6" transform="rotate(40 580 404)"/>
+</g>
+<!-- neat dome shrub -->
+<path d="M714 442 a76 76 0 0 1 152 0Z" fill="#2E4A38"/>
+<path d="M736 442 a54 54 0 0 1 108 0Z" fill="#8A9B6E" opacity=".5"/>
+<rect x="780" y="442" width="18" height="40" rx="7" fill="#1B2E24"/>
+</g>
+<!-- shears -->
+<g transform="rotate(-26 620 300)">
+<path d="M560 300 l96 -10 a14 14 0 0 1 0 22 l-96 -12Z" fill="#FBF7EF" stroke="#1B2E24" stroke-width="3"/>
+<path d="M560 300 l96 14 a14 14 0 0 0 2 -20 l-98 6Z" fill="#EAE1CF" stroke="#1B2E24" stroke-width="3"/>
+<circle cx="560" cy="300" r="8" fill="#1B2E24"/>
+<rect x="472" y="278" width="84" height="16" rx="8" fill="#C4622D" transform="rotate(8 514 286)"/>
+<rect x="472" y="308" width="84" height="16" rx="8" fill="#C4622D" transform="rotate(-8 514 316)"/>
+</g>
+<!-- ground strokes -->
+<g stroke="#8A9B6E" stroke-width="5" stroke-linecap="round" opacity=".8">
+<path d="M300 512 h44"/><path d="M640 520 h36"/><path d="M120 528 h30"/><path d="M880 512 h28"/>
+</g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360">
+<rect width="480" height="360" fill="#EAE1CF"/>
+<circle cx="392" cy="76" r="38" fill="#D9A45B"/>
+<path d="M-10 150 L70 92 L120 132 L180 84 L250 148 L490 132 L490 360 L-10 360Z" fill="#C9D2B1" opacity=".8"/>
+<path d="M62 100 L70 92 L80 101 L71 106Z M172 92 L180 84 L190 94 L180 99Z" fill="#FBF7EF"/>
+<!-- pine -->
+<g fill="#2E4A38">
+<path d="M60 210 l30 -70 30 70 -21 0 0 24 -18 0 0 -24z"/>
+<path d="M110 216 l22 -50 22 50 -15 0 0 18 -14 0 0 -18z"/>
+</g>
+<!-- meadow base -->
+<path d="M-10 220 C 140 196, 330 208, 490 198 L490 360 L-10 360Z" fill="#8A9B6E" opacity=".5"/>
+<!-- DG path -->
+<path d="M200 360 C 220 310, 190 270, 230 236 C 258 214, 300 216, 330 206 L 372 202 C 340 218, 300 224, 280 244 C 244 278, 276 316, 252 360Z" fill="#FBF7EF"/>
+<!-- bunchgrass tufts -->
+<g stroke="#2E4A38" stroke-width="4" stroke-linecap="round" fill="none">
+<path d="M80 330 C 72 300, 70 284, 76 264"/><path d="M94 330 C 94 298, 98 282, 108 262"/><path d="M106 330 C 114 304, 122 290, 136 276"/><path d="M70 330 C 58 306, 52 292, 42 278"/>
+<path d="M360 320 C 352 292, 350 278, 356 260"/><path d="M374 320 C 374 290, 378 274, 388 256"/><path d="M386 320 C 394 296, 402 282, 416 268"/>
+</g>
+<g stroke="#D9A45B" stroke-width="3.4" stroke-linecap="round" fill="none">
+<path d="M87 330 C 84 300, 86 284, 94 266"/><path d="M100 330 C 104 302, 110 288, 122 272"/>
+<path d="M367 320 C 364 292, 366 278, 374 262"/>
+</g>
+<!-- penstemon spikes -->
+<g>
+<g stroke="#2E4A38" stroke-width="3.4" stroke-linecap="round">
+<path d="M160 322 C 158 292, 160 276, 158 258"/>
+<path d="M180 326 C 180 296, 182 280, 180 262"/>
+<path d="M300 316 C 298 288, 300 272, 298 256"/>
+<path d="M320 320 C 320 292, 322 276, 320 260"/>
+</g>
+<g fill="#A34A22">
+<circle cx="158" cy="262" r="5"/><circle cx="160" cy="276" r="5.4"/><circle cx="159" cy="291" r="5.8"/>
+<circle cx="180" cy="266" r="5"/><circle cx="181" cy="281" r="5.4"/><circle cx="180" cy="296" r="5.8"/>
+<circle cx="298" cy="260" r="5"/><circle cx="299" cy="274" r="5.4"/><circle cx="299" cy="289" r="5.8"/>
+<circle cx="320" cy="264" r="5"/><circle cx="321" cy="278" r="5.4"/><circle cx="320" cy="293" r="5.8"/>
+</g>
+</g>
+<!-- foreground grass band -->
+<g stroke="#2E4A38" stroke-width="5" stroke-linecap="round" fill="none" opacity=".9">
+<path d="M20 360 C 16 336, 16 324, 22 308"/><path d="M42 360 C 42 332, 46 318, 56 302"/>
+<path d="M430 360 C 426 336, 426 324, 432 308"/><path d="M452 360 C 452 332, 456 318, 466 302"/><path d="M470 360 C 476 340, 482 330, 490 322"/>
+</g>
+</svg>
