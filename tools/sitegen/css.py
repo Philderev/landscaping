@@ -458,6 +458,23 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
 .price-row div span{display:block;font-size:.86rem;color:var(--ink-soft);margin-top:.15rem}
 .price-row .dots{flex:1;border-bottom:2px dotted rgba(163,74,34,.35);transform:translateY(-4px);min-width:2rem}
 .price-row strong{font-family:var(--serif);font-weight:520;font-size:1.12rem;color:var(--clay);white-space:nowrap}
+/* calculator */
+.calc{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,3.5vw,3rem);align-items:start}
+.calc-form{background:var(--cream);border:1px solid rgba(27,46,36,.09);border-radius:var(--r-lg);padding:clamp(1.5rem,3vw,2.2rem)}
+.calc-form fieldset.field{margin-bottom:1.5rem}
+.calc-size label{display:flex;align-items:baseline;gap:.4rem;font-weight:700;font-size:.88rem;color:var(--pine-900);margin-bottom:.7rem}
+.calc-size output{font-family:var(--serif);font-size:1.3rem;font-weight:520;color:var(--clay);margin-left:.2rem}
+.calc-size input[type="range"]{width:100%;accent-color:var(--clay);height:2rem;cursor:pointer}
+.calc-scale{display:flex;justify-content:space-between;font-size:.78rem;color:var(--ink-soft);margin-top:.1rem}
+.calc-out{background:var(--pine-950);color:#E9E4D5;border-radius:var(--r-lg);padding:clamp(1.7rem,3vw,2.4rem);position:sticky;top:96px}
+.calc-out-label{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 .6rem}
+.calc-total{display:block;font-family:var(--serif);font-weight:460;font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.1;color:var(--cream);margin-bottom:.5rem;min-height:1.2em}
+.calc-desc{font-size:.95rem;color:var(--sage-lt);margin-bottom:1.2rem}
+.calc-notes{list-style:none;margin:0 0 1.6rem;padding:1.1rem 0 0;border-top:1px solid rgba(249,244,233,.15);display:grid;gap:.5rem}
+.calc-notes li{font-size:.87rem;color:rgba(233,228,213,.75);padding-left:1.2rem;position:relative}
+.calc-notes li::before{content:"—";position:absolute;left:0;color:var(--clay)}
+.calc-out .btn{width:100%}
+
 .factors{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem)}
 .factor{background:var(--cream);border:1px solid rgba(27,46,36,.09);border-radius:var(--r-md);padding:1.4rem 1.5rem}
 .factor h3{font-size:1.08rem;margin-bottom:.4rem}
@@ -492,6 +509,8 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
   .facts{grid-template-columns:1fr 1fr}
   .tiers{grid-template-columns:1fr}
   .tier.pop{order:-1}
+  .calc{grid-template-columns:1fr}
+  .calc-out{position:static}
   .factors{grid-template-columns:1fr}
   .price-row{flex-wrap:wrap}
   .price-row .dots{display:none}

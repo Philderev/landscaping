@@ -329,6 +329,50 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
     });
   }
 
+  // Pricing calculator — mirrors the line-item rates published on the page.
+  var calc = document.getElementById("calc");
+  if (calc) {
+    var TYPES = {
+      full:       { lo: 12,  hi: 22, min: 400,  max: 12000, def: 1500, step: 100, floor: 8000,  name: "Full landscape" },
+      patio:      { lo: 22,  hi: 28, min: 120,  max: 1500,  def: 350,  step: 10,  floor: 8500,  name: "Patio & hardscape" },
+      irrigation: { lo: 1.5, hi: 3,  min: 1000, max: 15000, def: 4000, step: 250, floor: 4500,  name: "Irrigation system" },
+      refresh:    { lo: 6,   hi: 12, min: 200,  max: 5000,  def: 800,  step: 50,  floor: 2500,  name: "Planting refresh" }
+    };
+    var EXTRAS = { fire: [3500, 9000], light: [2400, 4200], rock: [1500, 5000] };
+    var TIER_NAMES = { "1": "Essential", "1.25": "Signature", "1.6": "Premium" };
+    var size = document.getElementById("c-size");
+    var sizeOut = document.getElementById("c-size-out");
+    var total = document.getElementById("c-total");
+    var desc = document.getElementById("c-desc");
+    var fmt = function (n) {
+      n = Math.round(n / 250) * 250;
+      return "$" + n.toLocaleString("en-US");
+    };
+    var update = function (typeChanged) {
+      var t = TYPES[calc.elements["c-type"].value];
+      if (typeChanged) {
+        size.min = t.min; size.max = t.max; size.step = t.step; size.value = t.def;
+        document.getElementById("c-min").textContent = t.min.toLocaleString("en-US");
+        document.getElementById("c-max").textContent = t.max.toLocaleString("en-US");
+      }
+      var sq = +size.value;
+      var mult = +calc.elements["c-tier"].value;
+      var lo = sq * t.lo * mult, hi = sq * t.hi * mult;
+      calc.querySelectorAll('input[name="c-extra"]:checked').forEach(function (x) {
+        lo += EXTRAS[x.value][0]; hi += EXTRAS[x.value][1];
+      });
+      lo = Math.max(lo, t.floor); hi = Math.max(hi, lo * 1.4);
+      sizeOut.textContent = sq.toLocaleString("en-US");
+      total.textContent = fmt(lo) + " – " + fmt(hi);
+      desc.textContent = t.name + " · " + sq.toLocaleString("en-US") + " sq ft · " +
+        TIER_NAMES[calc.elements["c-tier"].value] + " finish";
+    };
+    calc.addEventListener("input", function (e) {
+      update(e.target.name === "c-type");
+    });
+    update(true);
+  }
+
   // Cookie banner. No analytics load unless the visitor allows them —
   // wire the GA4/GTM snippet behind the "granted" choice at launch.
   var ck = document.getElementById("cookie");

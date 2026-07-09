@@ -158,6 +158,61 @@ def body():
   </div>
 </section>
 
+<section class="sec" id="calculator" aria-labelledby="calc-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Try it yourself</p>
+      <h2 id="calc-h">Ballpark your project in twenty seconds</h2>
+      <p class="lede">Slide, tap, done — the same rates we publish below, doing the math for you. It's a ballpark, not a bid: your fixed number comes from a free site walk.</p>
+    </div>
+    <div class="calc rv">
+      <form class="calc-form" id="calc" aria-label="Landscaping cost calculator">
+        <fieldset class="field">
+          <legend>What are you planning?</legend>
+          <div class="pills">
+            <label><input type="radio" name="c-type" value="full" checked><span>Full landscape</span></label>
+            <label><input type="radio" name="c-type" value="patio"><span>Patio &amp; hardscape</span></label>
+            <label><input type="radio" name="c-type" value="irrigation"><span>Irrigation system</span></label>
+            <label><input type="radio" name="c-type" value="refresh"><span>Planting refresh</span></label>
+          </div>
+        </fieldset>
+        <div class="field calc-size">
+          <label for="c-size">Project size <output id="c-size-out" for="c-size">1,500</output> sq ft</label>
+          <input type="range" id="c-size" min="400" max="12000" step="100" value="1500">
+          <div class="calc-scale" aria-hidden="true"><span id="c-min">400</span><span id="c-max">12,000</span></div>
+        </div>
+        <fieldset class="field">
+          <legend>Finish level</legend>
+          <div class="pills">
+            <label><input type="radio" name="c-tier" value="1" checked><span>Essential</span></label>
+            <label><input type="radio" name="c-tier" value="1.25"><span>Signature</span></label>
+            <label><input type="radio" name="c-tier" value="1.6"><span>Premium</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field" style="margin-bottom:0">
+          <legend>Add-ons</legend>
+          <div class="pills">
+            <label><input type="checkbox" name="c-extra" value="fire"><span>Fire feature</span></label>
+            <label><input type="checkbox" name="c-extra" value="light"><span>Lighting</span></label>
+            <label><input type="checkbox" name="c-extra" value="rock"><span>Boulders &amp; rock work</span></label>
+          </div>
+        </fieldset>
+      </form>
+      <aside class="calc-out">
+        <p class="calc-out-label">Your ballpark</p>
+        <b class="calc-total" id="c-total" aria-live="polite">$27,000 – $49,500</b>
+        <p class="calc-desc" id="c-desc">Full landscape · 1,500 sq ft · Essential finish</p>
+        <ul class="calc-notes">
+          <li>Built from the line-item rates published on this page</li>
+          <li>Assumes normal access and no major grade surprises</li>
+          <li>Design fee credited back when we build</li>
+        </ul>
+        <a class="btn btn-primary" href="index.html#quote">Make it a real number — free site walk {ARR}</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <section class="sec" aria-labelledby="rates-h" style="background:var(--sand-2)">
   <div class="wrap">
     <div class="sec-head rv">
