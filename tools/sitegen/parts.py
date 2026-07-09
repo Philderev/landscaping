@@ -175,6 +175,7 @@ def header(root, active=""):
           {area_items}
         </ul>
       </div>
+      <a href="{root}pricing.html"{top('pricing')}>Pricing</a>
       <a href="{root}index.html#work">Our Work</a>
       <a href="{root}index.html#about">Why High Desert</a>
       <a class="nav-phone" href="tel:{SITE['phone_tel']}" aria-label="Call {SITE['phone_display']}">{SITE['phone_display']}</a>
@@ -201,7 +202,9 @@ def footer(root):
     </div>
     <nav aria-label="Services">
       <h3>Services</h3>
-      <ul>{svc_links}</ul>
+      <ul>{svc_links}
+        <li><a href="{root}pricing.html">Pricing</a></li>
+      </ul>
     </nav>
     <div>
       <h3>Serving</h3>

@@ -14,6 +14,7 @@ import pages_index
 import pages_services
 import pages_areas
 import pages_legal
+import pages_pricing
 
 ROOT = r"E:\templates\landscaping website template"
 SP = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # scratchpad
@@ -92,6 +93,17 @@ for slug, name in AREA_PAGES:
         schemas=schemas,
     ))
 
+# ------------------------------------------------------------------ pricing
+write("pricing.html", page(
+    title="Landscaping Prices in Bend, OR (2026) | Sage & Stone Landscape Co.",
+    desc="Real 2026 landscaping prices for Bend & Central Oregon: paver patios $22–$28/sq ft, full design-build projects $25k–$120k, irrigation from $1.50/sq ft, maintenance $220–$480/mo. Fixed line-item estimates.",
+    canonical_path="pricing.html",
+    root="",
+    body=pages_pricing.body(),
+    active="pricing",
+    schemas=[breadcrumb_schema([("Home", ""), ("Pricing", None)])],
+))
+
 # ------------------------------------------------------------------ legal + thank-you
 write("privacy.html", page(
     title="Privacy Policy | Sage & Stone Landscape Co.",
@@ -146,6 +158,7 @@ Sitemap: {SITE['base']}sitemap.xml
 
 urls = ([("", "1.0")]
         + [(f"services/{s}.html", "0.8") for s in pages_services.ORDER]
+        + [("pricing.html", "0.8")]
         + [(f"areas/{s}.html", "0.7") for s, _ in AREA_PAGES]
         + [("privacy.html", "0.3"), ("terms.html", "0.3")])
 entries = "\n".join(
