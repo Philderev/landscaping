@@ -102,12 +102,14 @@ def body():
     for t in TIERS:
         items = "\n".join(f"<li>{ICON_CHECK}<span>{i}</span></li>" for i in t["items"])
         badge = '<span class="tier-badge">Most booked</span>' if t["pop"] else ""
+        btn = "btn-primary" if t["pop"] else "btn-ghost"
         tiers += f'''<div class="tier{' pop' if t['pop'] else ''} rv">
   {badge}
   <h3>{t['name']}</h3>
   <b class="amount">{t['range']}</b>
   <p>{t['who']}</p>
   <ul class="checks">{items}</ul>
+  <a class="btn {btn}" href="index.html#quote">Book a free site walk {ARR}</a>
 </div>'''
 
     groups = ""

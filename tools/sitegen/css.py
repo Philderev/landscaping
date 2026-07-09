@@ -426,7 +426,7 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
 .chat-links svg{width:17px;height:17px;fill:var(--clay);flex:none}
 
 /* ---------- pricing page ---------- */
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2rem);align-items:start}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2rem)}
 .tier{position:relative;background:var(--cream);border:1px solid rgba(27,46,36,.1);border-radius:var(--r-lg);
   padding:1.9rem 1.8rem;transition:transform .25s,box-shadow .25s}
 .tier:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
@@ -440,8 +440,11 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
 .tier .amount{display:block;font-family:var(--serif);font-weight:460;font-size:clamp(1.9rem,3vw,2.5rem);color:var(--clay);line-height:1.1;margin-bottom:.55rem}
 .tier.pop .amount{color:var(--gold)}
 .tier p{font-size:.94rem;color:var(--ink-soft);margin-bottom:1.2rem}
-.tier .checks{gap:.55rem}
+.tier{display:flex;flex-direction:column}
+.tier .checks{gap:.55rem;flex:1}
 .tier .checks li{font-size:.93rem}
+.tier .btn{width:100%;margin-top:1.5rem}
+.tier.pop .btn-primary:hover{background:var(--gold);color:var(--pine-950)}
 .price-groups{display:grid;gap:clamp(1.6rem,3vw,2.4rem)}
 .price-group{background:var(--cream);border:1px solid rgba(27,46,36,.09);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2.2rem)}
 .pg-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.6rem;margin-bottom:1.1rem}
