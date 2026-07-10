@@ -200,7 +200,7 @@ def body(slug):
         <a class="btn btn-primary" href="../index.html#quote">Request my site walk {ARR}</a>
         <a class="btn btn-ghost" href="tel:{SITE['phone_tel']}">Call {SITE['phone_display']}</a>
         <hr>
-        {lazy_img("../assets/img/map-central-oregon.webp", "Map of the Sage &amp; Stone service area across Central Oregon", 1120, 940, style="border-radius:12px")}
+        <iframe class="live-map side-map" title="Map showing Sage &amp; Stone Landscape Co. in Bend, Oregon" src="https://www.google.com/maps?q=20310+Empire+Ave,+Suite+E4,+Bend,+OR+97703&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <hr>
         <h4 style="margin:0 0 .8rem;font-family:var(--serif);font-weight:500">Nearby areas</h4>
         <ul class="side-links">{near}</ul>

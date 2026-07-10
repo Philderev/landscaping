@@ -257,7 +257,7 @@ BODY = f'''
       </ul>
     </div>
     <div class="map-card rv">
-      {lazy_img("assets/img/map-central-oregon.webp", "Stylized map of Central Oregon showing the Sage &amp; Stone service area: Bend, Redmond, Sisters, Tumalo, Sunriver, La Pine, Powell Butte and Prineville along Highway 97 and the Deschutes River", 1120, 940)}
+      <iframe class="live-map" title="Map showing Sage &amp; Stone Landscape Co. in Bend, Oregon" src="https://www.google.com/maps?q=20310+Empire+Ave,+Suite+E4,+Bend,+OR+97703&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -304,23 +304,29 @@ BODY = f'''
           <label for="f-email">Email</label>
           <input id="f-email" name="email" type="email" autocomplete="email" required>
         </div>
-        <fieldset class="field">
-          <legend>What do you need?</legend>
-          <div class="pills">
-            <label><input type="radio" name="service" value="design-build" checked><span>Design &amp; build</span></label>
-            <label><input type="radio" name="service" value="hardscape"><span>Patio or hardscape</span></label>
-            <label><input type="radio" name="service" value="irrigation"><span>Irrigation</span></label>
-            <label><input type="radio" name="service" value="maintenance"><span>Maintenance</span></label>
-            <label><input type="radio" name="service" value="not-sure"><span>Not sure yet</span></label>
-          </div>
-        </fieldset>
+        <div class="field">
+          <label for="f-service">What do you need?</label>
+          <select id="f-service" name="service" required>
+            <option value="" selected disabled>Select a service</option>
+            <option value="design-build">Design &amp; build</option>
+            <option value="hardscape">Patio or hardscape</option>
+            <option value="irrigation">Irrigation</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+        </div>
         <div class="field">
           <label for="f-msg">Tell us about the project</label>
           <textarea id="f-msg" name="message" placeholder="Lot size, what's there now, what you're dreaming about…"></textarea>
         </div>
-        <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
-        <p class="consent">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We only use your details to contact you about your project.</p>
-        <p class="form-note">Prefer to talk? Call <a href="tel:{SITE['phone_tel']}">{SITE['phone_display']}</a> — Mon–Fri 7am–5pm.</p>
+        <label class="sms-consent" for="f-sms-consent">
+          <input id="f-sms-consent" name="sms_consent" type="checkbox" value="yes" required>
+          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from Sage &amp; Stone Landscape Co. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
+        </label>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
+          <p class="form-legal"><a href="privacy.html">Privacy Policy</a><span aria-hidden="true"> | </span><a href="terms.html">Terms of Service</a></p>
+        </div>
       </form>
     </div>
     <aside class="info-card rv" aria-label="Contact details">
