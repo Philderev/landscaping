@@ -39,21 +39,6 @@ SERVICE_PAGES = [
     ("landscape-maintenance", "Year-Round Maintenance"),
 ]
 
-# The logo mark: a trail cairn (three stacked stones) in front of a clay sun,
-# with a sage sprig. Drawn once, reused inline everywhere via currentColor-ish
-# fixed palette (works on light and dark backgrounds).
-def logo_mark(stone="#1B2E24", size=44, title=False):
-    t = "<title>Sage &amp; Stone Landscape Co. mark</title>" if title else ""
-    return f'''<svg viewBox="0 0 64 64" width="{size}" height="{size}" role="img" aria-hidden="{'false' if title else 'true'}" focusable="false">{t}
-<circle cx="38" cy="22" r="14" fill="#C4622D"/>
-<path d="M14 20c4-6 13-5 15 1 1 4-1 7-4 8l-11 .4c-3-2-3-6 0-9.4Z" fill="#8A9B6E" transform="rotate(-28 22 24) translate(-4 -6)"/>
-<path d="M22 12c-6 1-9 6-8 10" fill="none" stroke="#8A9B6E" stroke-width="2.6" stroke-linecap="round"/>
-<ellipse cx="32" cy="27" rx="9.5" ry="6.5" fill="{stone}"/>
-<ellipse cx="31" cy="38" rx="13.5" ry="7.5" fill="{stone}"/>
-<ellipse cx="32" cy="51" rx="18" ry="8.5" fill="{stone}"/>
-</svg>'''
-
-
 ICON_PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7.4 7.4 0 0 0-7.4 7.4c0 5.3 6.5 11.9 6.8 12.2a.9.9 0 0 0 1.2 0c.3-.3 6.8-6.9 6.8-12.2A7.4 7.4 0 0 0 12 2Zm0 10.2a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8Z"/></svg>'
 ICON_PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6c-1.2-.1-2.4-.4-3.5-.9-.5-.2-1.1-.1-1.5.3l-1.5 1.5a15.3 15.3 0 0 1-6.4-6.4L9 8.6c.4-.4.5-1 .3-1.5-.5-1.1-.8-2.3-.9-3.5A1.5 1.5 0 0 0 6.9 2.3H4a1.6 1.6 0 0 0-1.6 1.8A18.6 18.6 0 0 0 19.9 21.6 1.6 1.6 0 0 0 21.7 20v-2.9a1.5 1.5 0 0 0-1.3-1.5Z"/></svg>'
 ICON_MAIL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-6.54 4.09a2 2 0 0 1-2.12 0L4.4 8.25a.85.85 0 1 1 .9-1.44L12 10.9l6.7-4.09a.85.85 0 1 1 .9 1.44Z"/></svg>'
@@ -62,7 +47,7 @@ ICON_CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0
 STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17l-5.9 3.2 1.3-6.6L2.5 9l6.6-.8Z"/></svg>'
 ARR = '<span class="arr" aria-hidden="true">→</span>'
 
-SQUIGGLE = '<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 40 2, 75 12, 110 7 S 185 3, 217 8" fill="none" stroke="#C4622D" stroke-width="5" stroke-linecap="round"/></svg>'
+SQUIGGLE = '<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 C 40 2, 75 12, 110 7 S 185 3, 217 8" fill="none" stroke="#55704A" stroke-width="5" stroke-linecap="round"/></svg>'
 
 
 def lazy_img(src, alt, w, h, style=""):
@@ -78,7 +63,7 @@ def lazy_img(src, alt, w, h, style=""):
             f'<noscript><img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy"{st}></noscript>')
 
 CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-<g fill="none" stroke="#C9D2B1" stroke-width="1.4">
+<g fill="none" stroke="#C3D2A8" stroke-width="1.4">
 <path d="M-40 520 C 180 430, 300 560, 520 480 S 900 420, 1240 500"/>
 <path d="M-40 470 C 190 380, 320 510, 540 430 S 910 370, 1240 450"/>
 <path d="M-40 420 C 200 330, 340 460, 560 380 S 920 320, 1240 400"/>
@@ -110,7 +95,7 @@ def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=N
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canon}">
-{'<meta name="robots" content="noindex,nofollow">' if noindex else ''}<meta name="theme-color" content="#12211A">
+{'<meta name="robots" content="noindex,nofollow">' if noindex else ''}<meta name="theme-color" content="#161F14">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{SITE['name']}">
 <meta property="og:title" content="{title}">
@@ -153,11 +138,21 @@ def header(root, active=""):
         for s, n in AREA_PAGES
     )
     return f'''<a class="skip" href="#main">Skip to content</a>
+<div class="announce" id="announce">
+  <div class="wrap announce-in">
+    <div class="announce-msgs" aria-live="polite">
+      <p class="on">Booking now for fall planting &amp; irrigation winterization — limited crew slots left.</p>
+      <p>Free irrigation checkup with every design-build project booked this month.</p>
+    </div>
+    <a class="announce-cta" href="{root}index.html#quote">Get a quote →</a>
+    <button type="button" class="announce-close" aria-label="Dismiss announcement">&times;</button>
+  </div>
+</div>
 <header class="site-head" id="top">
   <div class="wrap head-in">
     <a class="brand" href="{root}index.html">
-      {logo_mark()}
-      <span class="brand-name">Sage &amp; Stone<span class="brand-sub">Landscape Co. · Bend, OR</span></span>
+      <img src="{root}assets/img/s&amp;s.png" alt="" width="44" height="55">
+      <span class="brand-name">Sage &amp; Stone</span>
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -192,7 +187,7 @@ def footer(root):
     return f'''<footer class="site-foot">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      {logo_mark(stone="#F4EEE3", size=52)}
+      <img src="{root}assets/img/s&amp;s-white.png" alt="" width="52" height="65">
       <p>Design-build landscaping rooted in Central Oregon — native planting, basalt hardscapes, and water-wise systems made for the high desert.</p>
       <div class="socials">
         <a href="https://www.facebook.com/sageandstonebend" aria-label="Sage &amp; Stone on Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V13h2.7v8Z"/></svg></a>
@@ -239,7 +234,7 @@ def footer(root):
 <div class="chat" id="chat">
   <div class="chat-pop" id="chat-pop" hidden>
     <div class="chat-head">
-      {logo_mark(stone="#F4EEE3", size=34)}
+      <img src="{root}assets/img/s&amp;s-white.png" alt="" width="34" height="42">
       <div><b>Sage &amp; Stone</b><span>Typically replies within the hour, Mon–Fri</span></div>
     </div>
     <div class="chat-body">
@@ -271,7 +266,7 @@ def business_schema():
         "telephone": SITE["phone_tel"],
         "email": SITE["email"],
         "image": SITE["base"] + "assets/img/og-home.jpg",
-        "logo": SITE["base"] + "assets/img/logo.svg",
+        "logo": SITE["base"] + "assets/img/s&s.png",
         "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",

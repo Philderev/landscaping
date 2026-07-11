@@ -182,8 +182,8 @@ write("site.webmanifest", """{
     { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
-  "theme_color": "#12211A",
-  "background_color": "#F4EEE3",
+  "theme_color": "#161F14",
+  "background_color": "#F2ECD3",
   "display": "browser"
 }
 """)
@@ -206,6 +206,31 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
         nav.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
       }
+    });
+  }
+
+  // Announcement bar. Dismissal is remembered so it doesn't return on
+  // the next visit; bump the key if the promo copy changes.
+  var announce = document.getElementById("announce");
+  if (announce) {
+    var aClose = announce.querySelector(".announce-close");
+    var dismissed = null;
+    try { dismissed = localStorage.getItem("ss-announce-dismissed"); } catch (err) {}
+    if (dismissed) announce.classList.add("hide");
+    var msgs = announce.querySelectorAll(".announce-msgs p");
+    var rotate = null;
+    if (msgs.length > 1) {
+      var mi = 0;
+      rotate = setInterval(function () {
+        msgs[mi].classList.remove("on");
+        mi = (mi + 1) % msgs.length;
+        msgs[mi].classList.add("on");
+      }, 5000);
+    }
+    aClose.addEventListener("click", function () {
+      announce.classList.add("hide");
+      if (rotate) clearInterval(rotate);
+      try { localStorage.setItem("ss-announce-dismissed", "1"); } catch (err) {}
     });
   }
 

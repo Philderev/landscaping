@@ -9,45 +9,35 @@ VID = os.path.join(ROOT, "assets", "video")
 os.makedirs(IMG, exist_ok=True)
 os.makedirs(VID, exist_ok=True)
 
-PINE = (27, 46, 36)
-CLAY = (196, 98, 45)
-SAGE = (138, 155, 110)
-SAND = (244, 238, 227)
-CREAM = (251, 247, 239)
-GOLD = (217, 164, 91)
+PINE = (22, 31, 20)
+SAND = (242, 236, 211)
+CREAM = (248, 244, 226)
+GOLD = (205, 186, 140)
 
 
-def draw_mark(size, bg=None):
-    """The cairn + sun + sage sprig mark, supersampled 4x. Mirrors logo.svg."""
-    ss = 4
-    s = size * ss
-    u = s / 64  # logo.svg viewBox units
-    img = Image.new("RGBA", (s, s), (0, 0, 0, 0) if bg is None else bg + (255,))
-    d = ImageDraw.Draw(img)
-    # sun
-    d.ellipse([(38 - 14) * u, (22 - 14) * u, (38 + 14) * u, (22 + 14) * u], fill=CLAY)
-    # sprig stem (arc) + leaf blob
-    d.arc([8 * u, 12 * u, 30 * u, 32 * u], start=180, end=300, fill=SAGE, width=int(2.6 * u))
-    leaf = Image.new("RGBA", (s, s), (0, 0, 0, 0))
-    dl = ImageDraw.Draw(leaf)
-    dl.ellipse([9 * u, 15 * u, 26 * u, 26 * u], fill=SAGE)
-    leaf = leaf.rotate(18, center=(17 * u, 20 * u), resample=Image.BICUBIC)
-    img.alpha_composite(leaf)
-    # stones
-    d.ellipse([(32 - 9.5) * u, (27 - 6.5) * u, (32 + 9.5) * u, (27 + 6.5) * u], fill=PINE)
-    d.ellipse([(31 - 13.5) * u, (38 - 7.5) * u, (31 + 13.5) * u, (38 + 7.5) * u], fill=PINE)
-    d.ellipse([(32 - 18) * u, (51 - 8.5) * u, (32 + 18) * u, (51 + 8.5) * u], fill=PINE)
-    return img.resize((size, size), Image.LANCZOS)
+def fit_logo(path, box):
+    """The s&s mark, resized to fit within box x box (aspect preserved), centered on a transparent canvas."""
+    src = Image.open(path).convert("RGBA")
+    w, h = src.size
+    scale = box / max(w, h)
+    new = src.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.LANCZOS)
+    canvas = Image.new("RGBA", (box, box), (0, 0, 0, 0))
+    off = ((box - new.width) // 2, (box - new.height) // 2)
+    canvas.alpha_composite(new, off)
+    return canvas
 
+
+LOGO = os.path.join(IMG, "s&s.png")
+LOGO_WHITE = os.path.join(IMG, "s&s-white.png")
 
 # favicons / touch icons
-draw_mark(96).save(os.path.join(IMG, "favicon-96.png"))
-pad_mark = draw_mark(148)
+fit_logo(LOGO, 96).save(os.path.join(IMG, "favicon-96.png"))
+pad_mark = fit_logo(LOGO, 148)
 apple = Image.new("RGBA", (180, 180), SAND + (255,))
 apple.alpha_composite(pad_mark, (16, 16))
 apple.convert("RGB").save(os.path.join(IMG, "apple-touch-icon.png"))
 for n in (192, 512):
-    inner = draw_mark(int(n * 0.82))
+    inner = fit_logo(LOGO, int(n * 0.82))
     icon = Image.new("RGBA", (n, n), SAND + (255,))
     off = (n - inner.width) // 2
     icon.alpha_composite(inner, (off, off))
@@ -73,7 +63,7 @@ f_big = ImageFont.truetype(os.path.join(SP, "fraunces-static350.ttf"), 92)
 f_amp = ImageFont.truetype(os.path.join(SP, "fraunces-static600.ttf"), 92)
 f_sub = ImageFont.truetype("arialbd.ttf", 26)
 d = ImageDraw.Draw(og)
-mark = draw_mark(110)
+mark = fit_logo(LOGO_WHITE, 110)
 og.alpha_composite(mark, (72, 428))
 x = 210
 d.text((x, 430), "Sage & Stone", font=f_big, fill=CREAM)

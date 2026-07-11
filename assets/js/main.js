@@ -18,6 +18,31 @@
     });
   }
 
+  // Announcement bar. Dismissal is remembered so it doesn't return on
+  // the next visit; bump the key if the promo copy changes.
+  var announce = document.getElementById("announce");
+  if (announce) {
+    var aClose = announce.querySelector(".announce-close");
+    var dismissed = null;
+    try { dismissed = localStorage.getItem("ss-announce-dismissed"); } catch (err) {}
+    if (dismissed) announce.classList.add("hide");
+    var msgs = announce.querySelectorAll(".announce-msgs p");
+    var rotate = null;
+    if (msgs.length > 1) {
+      var mi = 0;
+      rotate = setInterval(function () {
+        msgs[mi].classList.remove("on");
+        mi = (mi + 1) % msgs.length;
+        msgs[mi].classList.add("on");
+      }, 5000);
+    }
+    aClose.addEventListener("click", function () {
+      announce.classList.add("hide");
+      if (rotate) clearInterval(rotate);
+      try { localStorage.setItem("ss-announce-dismissed", "1"); } catch (err) {}
+    });
+  }
+
   // Header shadow once scrolled
   var head = document.querySelector(".site-head");
   if (head) {

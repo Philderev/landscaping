@@ -35,15 +35,15 @@ SERVICES = [
 ]
 
 REVIEWS = [
-    ("Marta &amp; Dan K.", "NorthWest Crossing, Bend",
+    ("Marta &amp; Dan K.", "NorthWest Crossing, Bend", "3 weeks ago",
      "They tore out a thirsty lawn we fought for a decade and gave us a meadow of fescue and penstemon that looks better in August than the lawn ever did in June. Our water bill dropped by almost half."),
-    ("Craig B.", "Tumalo",
+    ("Craig B.", "Tumalo", "1 month ago",
      "Three companies told us our slope couldn't hold a patio. Sage &amp; Stone built a basalt terrace with a fire court that hasn't moved a millimeter through two winters. Worth every dollar."),
-    ("Alison R.", "Sisters",
+    ("Alison R.", "Sisters", "6 weeks ago",
      "The crew was on time every single morning, tarped everything, and swept the street before they left. The design still stops neighbors on their evening walks."),
-    ("Priya &amp; Tom S.", "Awbrey Butte, Bend",
+    ("Priya &amp; Tom S.", "Awbrey Butte, Bend", "2 months ago",
      "We wanted low-water without it looking like a gravel pit. What we got is layered, full of birds, and basically ignores the deer. The maintenance plan keeps it dialed."),
-    ("Jeff M.", "Sunriver",
+    ("Jeff M.", "Sunriver", "5 days ago",
      "Their irrigation rebuild found leaks two other outfits missed. The smart controller paid for itself the first season — and the lawn we kept is the healthiest it's ever been."),
 ]
 
@@ -80,11 +80,19 @@ def _svc_cards():
 def _reviews():
     out = []
     stars = f'<div class="stars" role="img" aria-label="5 out of 5 stars">{STAR * 5}</div>'
-    for name, place, text in REVIEWS:
+    for name, place, when, text in REVIEWS:
+        initial = name[0]
         out.append(f'''<article class="review">
+  <div class="review-top">
+    <div class="review-avatar" aria-hidden="true">{initial}</div>
+    <div>
+      <b>{name}</b>
+      <span class="review-when">{when}</span>
+    </div>
+  </div>
   {stars}
   <p>{text}</p>
-  <footer><b>{name}</b>{place}</footer>
+  <footer>{place}</footer>
 </article>''')
     return "\n".join(out)
 
