@@ -80,9 +80,8 @@ CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="
 def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=None, preload_poster=False, noindex=False):
     """Build the full <head> — inline CSS is appended by build.py."""
     canon = SITE["base"] + canonical_path
-    # Use the brand logo for link previews. The ampersand is URL-encoded so
-    # social crawlers reliably request the filename.
-    og_img = SITE["base"] + "assets/img/s%26s.png?v=3"
+    # A landscape social card keeps the logo centered in link-preview crops.
+    og_img = SITE["base"] + "assets/img/og-logo-centered.png?v=4"
     schemas = extra_schema or []
     blocks = "\n".join(
         f'<script type="application/ld+json">{json.dumps(s, separators=(",", ":"))}</script>'
@@ -106,8 +105,8 @@ def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=N
 <meta property="og:image" content="{og_img}">
 <meta property="og:image:secure_url" content="{og_img}">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="465">
-<meta property="og:image:height" content="579">
+<meta property="og:image:width" content="1730">
+<meta property="og:image:height" content="909">
 <meta property="og:image:alt" content="Sage &amp; Stone Landscape Co. logo">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
