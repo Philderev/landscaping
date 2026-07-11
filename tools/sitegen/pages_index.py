@@ -80,6 +80,7 @@ def _svc_cards():
 def _reviews():
     out = []
     stars = f'<div class="stars" role="img" aria-label="5 out of 5 stars">{STAR * 5}</div>'
+    google_url = "https://www.google.com/maps?q=" + SITE["street"].replace(" ", "+") + f",+{SITE['city']},+{SITE['region']}+{SITE['zip']}"
     for name, place, when, text in REVIEWS:
         initial = name[0]
         out.append(f'''<article class="review">
@@ -87,12 +88,15 @@ def _reviews():
     <div class="review-avatar" aria-hidden="true">{initial}</div>
     <div>
       <b>{name}</b>
-      <span class="review-when">{when}</span>
+      <span class="review-when">{when} &middot; {place}</span>
     </div>
   </div>
   {stars}
   <p>{text}</p>
-  <footer>{place}</footer>
+  <footer>
+    <span>Posted on Google</span>
+    <a href="{google_url}" target="_blank" rel="noopener">Read on Google</a>
+  </footer>
 </article>''')
     return "\n".join(out)
 

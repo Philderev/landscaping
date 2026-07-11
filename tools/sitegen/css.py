@@ -218,7 +218,9 @@ ul{padding-left:1.2em}
 .review p{font-size:.98rem;color:var(--ink);flex:1}
 .stars{display:flex;gap:.18rem;margin-bottom:.9rem}
 .stars svg{width:16px;height:16px;fill:var(--gold)}
-.review footer{margin-top:1rem;padding-top:.9rem;border-top:1px solid rgba(27,46,36,.1);font-size:.85rem;color:var(--ink-soft)}
+.review footer{margin-top:1rem;padding-top:.9rem;border-top:1px solid rgba(27,46,36,.1);display:flex;align-items:center;justify-content:space-between;font-size:.85rem;color:var(--ink-soft)}
+.review footer a{color:var(--clay);font-weight:600;text-decoration:none}
+.review footer a:hover{text-decoration:underline}
 
 /* map + areas */
 .areas{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem);align-items:center}
