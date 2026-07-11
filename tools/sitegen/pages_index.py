@@ -131,12 +131,23 @@ BODY = f'''
     </video>
   </div>
   <div class="wrap hero-in">
-    <p class="eyebrow on-dark">Bend · Sisters · Redmond — Central Oregon</p>
-    <h1>Landscapes that belong to the <em>high desert{SQUIGGLE}</em></h1>
-    <p class="lede">Design-build landscaping made for 3,600&nbsp;ft: native planting, basalt hardscapes, and water-wise irrigation that thrive on volcanic soil, cold nights, and 300 days of sun.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#quote">Plan my landscape {ARR}</a>
-      <a class="btn btn-ghost on-dark" href="#services">See our services</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow on-dark">Bend · Sisters · Redmond - Central Oregon</p>
+        <h1>Landscapes that belong to the <em>high desert{SQUIGGLE}</em></h1>
+        <p class="lede">Design-build landscaping made for 3,600&nbsp;ft: native planting, basalt hardscapes, and water-wise irrigation that thrive on volcanic soil, cold nights, and 300 days of sun.</p>
+        <div class="hero-cta"><a class="btn btn-ghost on-dark" href="#services">See our services</a></div>
+      </div>
+      <form class="hero-form" action="#" method="post" aria-labelledby="hero-form-title">
+        <p class="eyebrow on-dark">Free site walk</p>
+        <h2 id="hero-form-title">Start your landscape plan</h2>
+        <div class="field"><label for="hero-name">Name</label><input id="hero-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="hero-phone">Phone</label><input id="hero-phone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="hero-service">What do you need?</label><select id="hero-service" name="service" required><option value="" selected disabled>Select a service</option><option value="design-build">Design &amp; build</option><option value="hardscape">Patio or hardscape</option><option value="irrigation">Irrigation</option><option value="maintenance">Maintenance</option><option value="not-sure">Not sure yet</option></select></div>
+        <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
+        <p class="hero-form-note">No pressure. We reply within one business day.</p>
+      </form>
     </div>
     <div class="hero-foot">
       <div class="hero-stats">

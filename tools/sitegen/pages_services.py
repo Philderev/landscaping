@@ -1,5 +1,5 @@
 # Service page definitions + body template.
-from parts import SITE, ICON_CHECK, ARR
+from parts import SITE, ICON_CHECK, ARR, compact_lead_form
 
 R = "../"
 
@@ -161,9 +161,10 @@ def body(slug):
   </nav>
 </div>
 <section class="wrap page-hero">
-  <p class="eyebrow">{NAMES[slug]} — Bend &amp; Central Oregon</p>
-  <h1>{p['h1']}</h1>
-  <p class="lede">{p['lede']}</p>
+  <div class="page-hero-grid">
+    <div><p class="eyebrow">{NAMES[slug]} — Bend &amp; Central Oregon</p><h1>{p['h1']}</h1><p class="lede">{p['lede']}</p></div>
+    {compact_lead_form('../')}
+  </div>
   <div class="banner-art rv">
     <img src="../assets/img/{p['banner'].replace('ill-', 'banner-').replace('.svg', '.webp')}" alt="{p['banner_alt']}" width="2520" height="960" fetchpriority="high">
   </div>

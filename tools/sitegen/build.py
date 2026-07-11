@@ -9,6 +9,19 @@ def minify_css(css):
     css = re.sub(r"\n+", "", css)
     css = re.sub(r"  +", " ", css)
     return css.strip()
+
+def remove_visible_dashes(html):
+    """Remove dash characters from rendered text without damaging markup or code."""
+    protected = re.split(r'(<(?:style|script)\b[^>]*>.*?</(?:style|script)>)', html,
+                         flags=re.I | re.S)
+    for i in range(0, len(protected), 2):
+        chunks = re.split(r'(<[^>]+>)', protected[i])
+        for j in range(0, len(chunks), 2):
+            chunks[j] = re.sub(r'[\-–—]+', ' ', chunks[j])
+            chunks[j] = re.sub(r' {2,}', ' ', chunks[j])
+            chunks[j] = re.sub(r' +(?=\n)', '', chunks[j])
+        protected[i] = ''.join(chunks)
+    return ''.join(protected)
 from parts import SITE, AREA_PAGES, head, header, footer, business_schema, breadcrumb_schema
 import pages_index
 import pages_services
@@ -23,7 +36,7 @@ DATE = "2026-07-09"
 
 def page(*, title, desc, canonical_path, root, body, active="", schemas=None, preload_poster=False, noindex=False):
     css = minify_css(CSS.replace("{R}", root))
-    return f'''<!DOCTYPE html>
+    html = f'''<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
 {head(title=title, desc=desc, canonical_path=canonical_path, root=root, extra_schema=schemas, preload_poster=preload_poster, noindex=noindex)}
@@ -35,6 +48,7 @@ def page(*, title, desc, canonical_path, root, body, active="", schemas=None, pr
 {footer(root)}
 </body>
 </html>'''
+    return remove_visible_dashes(html)
 
 
 def write(path, content):
@@ -345,14 +359,13 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
   // keep field names (name/phone/email/service/message) for tracking parity.
   // On success the visitor lands on the thank-you page (a clean conversion
   // URL for GA4/ads goals). Nothing is transmitted in this demo build.
-  var form = document.getElementById("lead-form");
-  if (form) {
+  document.querySelectorAll("#lead-form, .hero-form").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      window.location.href = "thank-you.html";
+      window.location.href = form.dataset.success || "thank-you.html";
     });
-  }
+  });
 
   // Pricing calculator — mirrors the line-item rates published on the page.
   var calc = document.getElementById("calc");

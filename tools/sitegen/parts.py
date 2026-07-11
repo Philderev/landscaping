@@ -39,6 +39,17 @@ SERVICE_PAGES = [
     ("landscape-maintenance", "Year-Round Maintenance"),
 ]
 
+def compact_lead_form(root=""):
+    return f'''<form class="hero-form" action="#" method="post" data-success="{root}thank-you.html" aria-label="Request a free site walk">
+  <p class="eyebrow">Free site walk</p><h2>Start your landscape plan</h2>
+  <div class="field"><label for="hero-name">Name</label><input id="hero-name" name="name" type="text" autocomplete="name" required></div>
+  <div class="field"><label for="hero-phone">Phone</label><input id="hero-phone" name="phone" type="tel" autocomplete="tel" required></div>
+  <div class="field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" autocomplete="email" required></div>
+  <div class="field"><label for="hero-service">What do you need?</label><select id="hero-service" name="service" required><option value="" selected disabled>Select a service</option><option value="design-build">Design &amp; build</option><option value="hardscape">Patio or hardscape</option><option value="irrigation">Irrigation</option><option value="maintenance">Maintenance</option><option value="not-sure">Not sure yet</option></select></div>
+  <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
+  <p class="hero-form-note">No pressure. We reply within one business day.</p>
+</form>'''
+
 ICON_PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7.4 7.4 0 0 0-7.4 7.4c0 5.3 6.5 11.9 6.8 12.2a.9.9 0 0 0 1.2 0c.3-.3 6.8-6.9 6.8-12.2A7.4 7.4 0 0 0 12 2Zm0 10.2a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8Z"/></svg>'
 ICON_PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6c-1.2-.1-2.4-.4-3.5-.9-.5-.2-1.1-.1-1.5.3l-1.5 1.5a15.3 15.3 0 0 1-6.4-6.4L9 8.6c.4-.4.5-1 .3-1.5-.5-1.1-.8-2.3-.9-3.5A1.5 1.5 0 0 0 6.9 2.3H4a1.6 1.6 0 0 0-1.6 1.8A18.6 18.6 0 0 0 19.9 21.6 1.6 1.6 0 0 0 21.7 20v-2.9a1.5 1.5 0 0 0-1.3-1.5Z"/></svg>'
 ICON_MAIL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-6.54 4.09a2 2 0 0 1-2.12 0L4.4 8.25a.85.85 0 1 1 .9-1.44L12 10.9l6.7-4.09a.85.85 0 1 1 .9 1.44Z"/></svg>'

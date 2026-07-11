@@ -1,5 +1,5 @@
 # Service-area pages — one per town, each with genuinely local content.
-from parts import SITE, AREA_PAGES, ICON_CHECK, ARR, lazy_img
+from parts import SITE, AREA_PAGES, ICON_CHECK, ARR, lazy_img, compact_lead_form
 
 NAME = dict(AREA_PAGES)
 
@@ -178,9 +178,10 @@ def body(slug):
   </nav>
 </div>
 <section class="wrap page-hero">
-  <p class="eyebrow">Serving {NAME[slug]}, Oregon</p>
-  <h1>{a['h1']}</h1>
-  <p class="lede">{a['lede']}</p>
+  <div class="page-hero-grid">
+    <div><p class="eyebrow">Serving {NAME[slug]}, Oregon</p><h1>{a['h1']}</h1><p class="lede">{a['lede']}</p></div>
+    {compact_lead_form('../')}
+  </div>
   <div class="facts rv">
     {facts}
   </div>

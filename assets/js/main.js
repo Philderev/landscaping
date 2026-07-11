@@ -154,14 +154,13 @@
   // keep field names (name/phone/email/service/message) for tracking parity.
   // On success the visitor lands on the thank-you page (a clean conversion
   // URL for GA4/ads goals). Nothing is transmitted in this demo build.
-  var form = document.getElementById("lead-form");
-  if (form) {
+  document.querySelectorAll("#lead-form, .hero-form").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      window.location.href = "thank-you.html";
+      window.location.href = form.dataset.success || "thank-you.html";
     });
-  }
+  });
 
   // Pricing calculator — mirrors the line-item rates published on the page.
   var calc = document.getElementById("calc");
