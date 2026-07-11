@@ -80,7 +80,9 @@ CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="
 def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=None, preload_poster=False, noindex=False):
     """Build the full <head> — inline CSS is appended by build.py."""
     canon = SITE["base"] + canonical_path
-    og_img = SITE["base"] + "assets/img/og-home.jpg"
+    # Version the share image so WhatsApp/Facebook do not keep showing a stale
+    # text-only card after the preview artwork changes.
+    og_img = SITE["base"] + "assets/img/og-home.jpg?v=2"
     schemas = extra_schema or []
     blocks = "\n".join(
         f'<script type="application/ld+json">{json.dumps(s, separators=(",", ":"))}</script>'
@@ -102,13 +104,17 @@ def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=N
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{og_img}">
+<meta property="og:image:secure_url" content="{og_img}">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sage &amp; Stone Landscape Co. — high-desert landscape design and build in Bend, Oregon">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{og_img}">
+<meta name="twitter:image:alt" content="Sage &amp; Stone Landscape Co. — high-desert landscape design and build in Bend, Oregon">
 <link rel="icon" href="{root}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{root}assets/img/favicon-96.png" type="image/png" sizes="96x96">
 <link rel="apple-touch-icon" href="{root}assets/img/apple-touch-icon.png">
