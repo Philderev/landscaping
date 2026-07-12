@@ -326,7 +326,8 @@ BODY = f'''
 </section>
 
 <section class="sec" id="quote" aria-labelledby="quote-h">
-  <div class="wrap contact-grid">
+  <div class="wrap">
+  <div class="contact-box contact-grid">
     <div class="rv">
       <p class="eyebrow">Free site walk &amp; estimate</p>
       <h2 id="quote-h">Tell us about your yard</h2>
@@ -388,6 +389,7 @@ BODY = f'''
       </div>
       <div class="info-line">{ICON_CHECK}<span>Oregon {SITE['lcb']} · {SITE['ccb']}<br>Licensed, bonded &amp; insured</span></div>
     </aside>
+  </div>
   </div>
 </section>
 </main>

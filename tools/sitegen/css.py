@@ -259,6 +259,7 @@ ul{padding-left:1.2em}
 
 /* contact */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem)}
+.contact-box{border:1.5px solid var(--pine-900);padding:clamp(1.6rem,4vw,3rem)}
 .field{margin-bottom:1.15rem}
 .field label{display:block;font-weight:700;font-size:.88rem;letter-spacing:.02em;margin-bottom:.4rem;color:var(--pine-900)}
 .field input,.field select,.field textarea{
