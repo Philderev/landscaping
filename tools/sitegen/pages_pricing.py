@@ -1,13 +1,13 @@
 # Pricing page. Figures anchored to 2026 national cost data (Angi, HomeGuide,
 # LawnLove, Techo-Bloc contractor survey, NerdWallet) with a Central Oregon
-# labor/material adjustment — and kept consistent with numbers quoted
+# labor/material adjustment - and kept consistent with numbers quoted
 # elsewhere on the site.
 from parts import SITE, ICON_CHECK, ARR
 
 TIERS = [
     {
         "name": "The Refresh",
-        "range": "$8k – $18k",
+        "range": "$8k - $18k",
         "who": "For a yard that's basically right but tired.",
         "items": [
             "Planting-bed renovation with native and adapted plants",
@@ -20,13 +20,13 @@ TIERS = [
     },
     {
         "name": "The Full Yard",
-        "range": "$25k – $60k",
+        "range": "$25k - $60k",
         "who": "Our most-booked project: a blank or broken yard, done completely.",
         "items": [
             "Scaled design with plant palette and materials board",
-            "Paver patio or gathering space (200–400 sq ft)",
+            "Paver patio or gathering space (200-400 sq ft)",
             "Full native planting plan with boulders and rock work",
-            "New hydrozoned irrigation — drip beds, efficient turf zones",
+            "New hydrozoned irrigation - drip beds, efficient turf zones",
             "Low-voltage lighting on paths and key trees",
             "Two-season craftsmanship + establishment warranty",
         ],
@@ -34,7 +34,7 @@ TIERS = [
     },
     {
         "name": "The Estate",
-        "range": "$60k – $150k+",
+        "range": "$60k - $150k+",
         "who": "Acreage and outdoor-living builds with multiple zones.",
         "items": [
             "Everything in The Full Yard, scaled to the property",
@@ -49,51 +49,51 @@ TIERS = [
 
 GROUPS = [
     ("Design", "landscape-design-build", [
-        ("Site walk &amp; consultation", "Free", "60–90 minutes on your property, honest talk, no folder of upsells"),
-        ("Landscape design package", "$1,500 – $4,500", "Scaled plan, plant palette, materials — credited back when we build"),
-        ("Design-build projects", "$25k – $120k", "Typical range for complete design-and-build landscapes in Central Oregon"),
+        ("Site walk &amp; consultation", "Free", "60-90 minutes on your property, honest talk, no folder of upsells"),
+        ("Landscape design package", "$1,500 - $4,500", "Scaled plan, plant palette, materials - credited back when we build"),
+        ("Design-build projects", "$25k - $120k", "Typical range for complete design-and-build landscapes in Central Oregon"),
     ]),
     ("Hardscape &amp; outdoor living", "hardscaping-outdoor-living", [
-        ("Paver patio, installed", "$22 – $28 / sq ft", "On engineered, freeze-thaw-rated base — most patios land $8,500–$30,000"),
-        ("Fire pit or fire court", "$3,500 – $9,000", "Basalt or steel, wood-burning or plumbed gas, permits handled"),
-        ("Retaining &amp; seat walls", "$45 – $75 / face sq ft", "Engineered for our freeze-thaw cycles, drainage included"),
+        ("Paver patio, installed", "$22 - $28 / sq ft", "On engineered, freeze-thaw-rated base - most patios land $8,500-$30,000"),
+        ("Fire pit or fire court", "$3,500 - $9,000", "Basalt or steel, wood-burning or plumbed gas, permits handled"),
+        ("Retaining &amp; seat walls", "$45 - $75 / face sq ft", "Engineered for our freeze-thaw cycles, drainage included"),
         ("Pergola or shade structure", "from $6,500", "Cedar or steel, framed for Central Oregon snow load"),
         ("Landscape lighting", "from $2,400", "8-fixture low-voltage starter system, expandable by zone"),
     ]),
     ("Water-wise irrigation", "water-wise-irrigation", [
-        ("New irrigation system", "$1.50 – $3.00 / sq ft", "Hydrozoned drip and high-efficiency rotators — most systems $4,500–$9,000"),
-        ("Turf-to-drip conversion", "from $12,000", "Lawn out, native planting in, water bill down 40–60%"),
-        ("Smart controller upgrade", "$650 – $1,200", "Weather-based controller, installed, programmed, and tuned"),
+        ("New irrigation system", "$1.50 - $3.00 / sq ft", "Hydrozoned drip and high-efficiency rotators - most systems $4,500-$9,000"),
+        ("Turf-to-drip conversion", "from $12,000", "Lawn out, native planting in, water bill down 40-60%"),
+        ("Smart controller upgrade", "$650 - $1,200", "Weather-based controller, installed, programmed, and tuned"),
         ("Irrigation audit &amp; tune-up", "$225", "Head-by-head check with a written report and fix list"),
         ("Fall blowout", "$95", "Route-scheduled before the first hard freeze"),
         ("Spring start-up", "$135", "Pressure checks, programming, and a written condition report"),
     ]),
     ("Maintenance &amp; care", "landscape-maintenance", [
-        ("Full-season program", "$220 – $480 / mo", "Weekly visits April–November: pruning, fertility, irrigation both ends"),
-        ("Every-other-week program", "from $160 / mo", "Same crew, lighter cadence — best for low-water landscapes"),
-        ("Spring or fall cleanup", "$350 – $950", "Cutbacks, bed refresh, pre-emergent, haul-away included"),
-        ("One-time cleanup &amp; reset", "from $650", "For yards that got away — includes a condition report"),
-        ("Mulch, delivered &amp; installed", "$95 – $120 / cu yd", "Includes edging and bed prep, not just a dumped pile"),
+        ("Full-season program", "$220 - $480 / mo", "Weekly visits April-November: pruning, fertility, irrigation both ends"),
+        ("Every-other-week program", "from $160 / mo", "Same crew, lighter cadence - best for low-water landscapes"),
+        ("Spring or fall cleanup", "$350 - $950", "Cutbacks, bed refresh, pre-emergent, haul-away included"),
+        ("One-time cleanup &amp; reset", "from $650", "For yards that got away - includes a condition report"),
+        ("Mulch, delivered &amp; installed", "$95 - $120 / cu yd", "Includes edging and bed prep, not just a dumped pile"),
     ]),
 ]
 
 FACTORS = [
     ("Access", "A yard a skid steer can reach costs less than one we wheelbarrow through a 36-inch gate."),
-    ("What's underground", "Lava rock, caliche hardpan, and old construction debris slow excavation — we scout it on the site walk."),
-    ("Materials", "Concrete pavers vs. natural basalt, cedar vs. steel — we price options side by side so you choose the trade-offs."),
+    ("What's underground", "Lava rock, caliche hardpan, and old construction debris slow excavation - we scout it on the site walk."),
+    ("Materials", "Concrete pavers vs. natural basalt, cedar vs. steel - we price options side by side so you choose the trade-offs."),
     ("Slope &amp; drainage", "Grade work and retaining needs are the biggest hidden variable on Bend's west side lots."),
-    ("Season", "Design in winter, build in spring — early-season slots book at standard rates while summer fills."),
+    ("Season", "Design in winter, build in spring - early-season slots book at standard rates while summer fills."),
 ]
 
 FAQ = [
     ("Why ranges instead of exact prices?",
-     "Because your lot hasn't been walked yet. These ranges are what real projects cost across Central Oregon; after a free site walk you get a fixed, line-item estimate — and that number holds unless hidden conditions surface, in which case we pause and agree on changes in writing first."),
+     "Because your lot hasn't been walked yet. These ranges are what real projects cost across Central Oregon; after a free site walk you get a fixed, line-item estimate - and that number holds unless hidden conditions surface, in which case we pause and agree on changes in writing first."),
     ("How do payments work?",
      "A deposit secures your build slot and materials, progress payments follow defined milestones, and the final payment comes at walkthrough. We never ask for full payment up front."),
     ("Are these prices high or low for Bend?",
-     "Middle of the licensed, insured market. Central Oregon runs a bit above national averages on labor and materials — our numbers track 2026 national cost guides with that adjustment. Unlicensed cash crews will quote less; they also disappear when the patio heaves in February."),
+     "Middle of the licensed, insured market. Central Oregon runs a bit above national averages on labor and materials - our numbers track 2026 national cost guides with that adjustment. Unlicensed cash crews will quote less; they also disappear when the patio heaves in February."),
     ("Does the design fee really come back?",
-     "Yes — the $1,500–$4,500 design fee is credited in full against the build when we construct the project within twelve months."),
+     "Yes - the $1,500-$4,500 design fee is credited in full against the build when we construct the project within twelve months."),
 ]
 
 
@@ -142,9 +142,9 @@ def body():
   </nav>
 </div>
 <section class="wrap page-hero">
-  <p class="eyebrow">Transparent pricing — Central Oregon, 2026</p>
+  <p class="eyebrow">Transparent pricing - Central Oregon, 2026</p>
   <h1>Honest numbers, before we ever walk your lot</h1>
-  <p class="lede">Most landscapers make you book a sales visit to hear a price. Here's what real projects cost across Bend and Central Oregon — anchored to 2026 national cost data, adjusted for our market. Your exact number comes from a free site walk and a fixed, line-item estimate.</p>
+  <p class="lede">Most landscapers make you book a sales visit to hear a price. Here's what real projects cost across Bend and Central Oregon - anchored to 2026 national cost data, adjusted for our market. Your exact number comes from a free site walk and a fixed, line-item estimate.</p>
 </section>
 
 <section class="sec" aria-labelledby="tiers-h" style="padding-top:clamp(2rem,4vw,3rem)">
@@ -154,7 +154,7 @@ def body():
       <h2 id="tiers-h">Three ways people invest in a landscape</h2>
     </div>
     <div class="tiers">{tiers}</div>
-    <p class="form-note rv" style="margin-top:1.6rem">Ranges reflect completed Sage &amp; Stone projects and 2026 cost guides. Every project gets a fixed line-item price before work begins — the price you approve is the price you pay.</p>
+    <p class="form-note rv" style="margin-top:1.6rem">Ranges reflect completed Sage &amp; Stone projects and 2026 cost guides. Every project gets a fixed line-item price before work begins - the price you approve is the price you pay.</p>
   </div>
 </section>
 
@@ -163,7 +163,7 @@ def body():
     <div class="sec-head rv">
       <p class="eyebrow">Try it yourself</p>
       <h2 id="calc-h">Ballpark your project in twenty seconds</h2>
-      <p class="lede">Slide, tap, done — the same rates we publish below, doing the math for you. It's a ballpark, not a bid: your fixed number comes from a free site walk.</p>
+      <p class="lede">Slide, tap, done - the same rates we publish below, doing the math for you. It's a ballpark, not a bid: your fixed number comes from a free site walk.</p>
     </div>
     <div class="calc rv">
       <form class="calc-form" id="calc" aria-label="Landscaping cost calculator">
@@ -200,14 +200,14 @@ def body():
       </form>
       <aside class="calc-out">
         <p class="calc-out-label">Your ballpark</p>
-        <b class="calc-total" id="c-total" aria-live="polite">$27,000 – $49,500</b>
+        <b class="calc-total" id="c-total" aria-live="polite">$27,000 - $49,500</b>
         <p class="calc-desc" id="c-desc">Full landscape · 1,500 sq ft · Essential finish</p>
         <ul class="calc-notes">
           <li>Built from the line-item rates published on this page</li>
           <li>Assumes normal access and no major grade surprises</li>
           <li>Design fee credited back when we build</li>
         </ul>
-        <a class="btn btn-primary" href="index.html#quote">Make it a real number — free site walk {ARR}</a>
+        <a class="btn btn-primary" href="index.html#quote">Make it a real number - free site walk {ARR}</a>
       </aside>
     </div>
   </div>

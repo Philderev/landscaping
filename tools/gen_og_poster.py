@@ -35,7 +35,7 @@ def draw_mark(size):
 
 frame = Image.open(os.path.join(SP, FRAME)).convert("RGB")
 
-# poster: 1600x900, modest quality — it's behind a dark overlay anyway
+# poster: 1600x900, modest quality - it's behind a dark overlay anyway
 poster = frame.resize((1600, 900), Image.LANCZOS)
 poster.save(os.path.join(ROOT, "assets", "video", "hero-poster.webp"), "WEBP", quality=68, method=6)
 print("poster", os.path.getsize(os.path.join(ROOT, "assets", "video", "hero-poster.webp")))

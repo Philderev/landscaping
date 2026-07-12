@@ -1,4 +1,4 @@
-// Sage & Stone — progressive enhancement. ~2 KB, no dependencies.
+// Sage & Stone - progressive enhancement. ~2 KB, no dependencies.
 (function () {
   "use strict";
 
@@ -75,7 +75,7 @@
         });
         video.load();
         var p = video.play();
-        if (p && p.catch) p.catch(function () { /* poster stays — fine */ });
+        if (p && p.catch) p.catch(function () { /* poster stays - fine */ });
         if ("IntersectionObserver" in window) {
           new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
@@ -150,7 +150,7 @@
   window.addEventListener("hashchange", fixAnchor);
   fixAnchor();
 
-  // Lead form — placeholder handler. Swap for the GHL form embed at launch;
+  // Lead form - placeholder handler. Swap for the GHL form embed at launch;
   // keep field names (name/phone/email/service/message) for tracking parity.
   // On success the visitor lands on the thank-you page (a clean conversion
   // URL for GA4/ads goals). Nothing is transmitted in this demo build.
@@ -162,7 +162,7 @@
     });
   });
 
-  // Pricing calculator — mirrors the line-item rates published on the page.
+  // Pricing calculator - mirrors the line-item rates published on the page.
   var calc = document.getElementById("calc");
   if (calc) {
     var TYPES = {
@@ -196,7 +196,7 @@
       });
       lo = Math.max(lo, t.floor); hi = Math.max(hi, lo * 1.4);
       sizeOut.textContent = sq.toLocaleString("en-US");
-      total.textContent = fmt(lo) + " – " + fmt(hi);
+      total.textContent = fmt(lo) + " - " + fmt(hi);
       desc.textContent = t.name + " · " + sq.toLocaleString("en-US") + " sq ft · " +
         TIER_NAMES[calc.elements["c-tier"].value] + " finish";
     };
@@ -206,7 +206,7 @@
     update(true);
   }
 
-  // Cookie banner. No analytics load unless the visitor allows them —
+  // Cookie banner. No analytics load unless the visitor allows them -
   // wire the GA4/GTM snippet behind the "granted" choice at launch.
   var ck = document.getElementById("cookie");
   if (ck) {

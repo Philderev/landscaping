@@ -117,7 +117,7 @@ ul{padding-left:1.2em}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 .hero-in{position:relative;width:100%;padding-top:9.5rem}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
 .hero-form{background:rgba(248,244,226,.96);color:var(--ink);padding:clamp(1.25rem,2.5vw,2rem);border-radius:var(--r-lg);box-shadow:var(--shadow);backdrop-filter:blur(10px)}
 .hero-form h2{font-size:clamp(1.55rem,2.4vw,2.1rem);margin-bottom:1rem}.hero-form .eyebrow{color:var(--clay);margin-bottom:.5rem}.hero-form .field{margin-bottom:.7rem}.hero-form .field label{font-size:.78rem;margin-bottom:.25rem}.hero-form .field input,.hero-form .field select{padding:.68rem .85rem;background:#fff}.hero-form .btn{width:100%;margin-top:.2rem}.hero-form-note{margin:.65rem 0 0;text-align:center;font-size:.78rem;color:var(--ink-soft)}
 .hero h1{color:var(--cream);max-width:13.5ch;font-weight:380;text-wrap:balance}
@@ -512,7 +512,7 @@ fieldset.field legend{font-weight:700;font-size:.88rem;letter-spacing:.02em;marg
 .calc-desc{font-size:.95rem;color:var(--sage-lt);margin-bottom:1.2rem}
 .calc-notes{list-style:none;margin:0 0 1.6rem;padding:1.1rem 0 0;border-top:1px solid rgba(249,244,233,.15);display:grid;gap:.5rem}
 .calc-notes li{font-size:.87rem;color:rgba(233,228,213,.75);padding-left:1.2rem;position:relative}
-.calc-notes li::before{content:"—";position:absolute;left:0;color:var(--clay)}
+.calc-notes li::before{content:"-";position:absolute;left:0;color:var(--clay)}
 .calc-out .btn{width:100%}
 
 .factors{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem)}

@@ -20,7 +20,7 @@ SITE = {
     "ccb": "CCB #231188",
 }
 
-# slug, display name — order matters (nav dropdown, footer, cross-links)
+# slug, display name - order matters (nav dropdown, footer, cross-links)
 AREA_PAGES = [
     ("bend", "Bend"),
     ("redmond", "Redmond"),
@@ -46,8 +46,13 @@ def compact_lead_form(root=""):
   <div class="field"><label for="hero-phone">Phone</label><input id="hero-phone" name="phone" type="tel" autocomplete="tel" required></div>
   <div class="field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" autocomplete="email" required></div>
   <div class="field"><label for="hero-service">What do you need?</label><select id="hero-service" name="service" required><option value="" selected disabled>Select a service</option><option value="design-build">Design &amp; build</option><option value="hardscape">Patio or hardscape</option><option value="irrigation">Irrigation</option><option value="maintenance">Maintenance</option><option value="not-sure">Not sure yet</option></select></div>
+  <label class="sms-consent" for="hero-sms-consent">
+    <input id="hero-sms-consent" name="sms_consent" type="checkbox" value="yes">
+    <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from {SITE['short']}. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
+  </label>
   <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
   <p class="hero-form-note">No pressure. We reply within one business day.</p>
+  <p class="form-legal"><a href="{root}privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="{root}terms.html">Terms of Service</a></p>
 </form>'''
 
 ICON_PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7.4 7.4 0 0 0-7.4 7.4c0 5.3 6.5 11.9 6.8 12.2a.9.9 0 0 0 1.2 0c.3-.3 6.8-6.9 6.8-12.2A7.4 7.4 0 0 0 12 2Zm0 10.2a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8Z"/></svg>'
@@ -89,7 +94,7 @@ CONTOURS = '''<svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="
 
 
 def head(*, title, desc, canonical_path, root, og_type="website", extra_schema=None, preload_poster=False, noindex=False):
-    """Build the full <head> — inline CSS is appended by build.py."""
+    """Build the full <head> - inline CSS is appended by build.py."""
     canon = SITE["base"] + canonical_path
     # A landscape social card keeps the logo centered in link-preview crops.
     og_img = SITE["base"] + "assets/img/og-logo-centered.png?v=4"
@@ -157,7 +162,7 @@ def header(root, active=""):
 <div class="announce" id="announce">
   <div class="wrap announce-in">
     <div class="announce-msgs" aria-live="polite">
-      <p class="on">Booking now for fall planting &amp; irrigation winterization — limited crew slots left.</p>
+      <p class="on">Booking now for fall planting &amp; irrigation winterization - limited crew slots left.</p>
       <p>Free irrigation checkup with every design-build project booked this month.</p>
     </div>
     <a class="announce-cta" href="{root}index.html#quote">Get a quote →</a>
@@ -204,7 +209,7 @@ def footer(root):
   <div class="wrap foot-grid">
     <div class="foot-brand">
       <img src="{root}assets/img/s&amp;s-white.png" alt="" width="52" height="65">
-      <p>Design-build landscaping rooted in Central Oregon — native planting, basalt hardscapes, and water-wise systems made for the high desert.</p>
+      <p>Design-build landscaping rooted in Central Oregon - native planting, basalt hardscapes, and water-wise systems made for the high desert.</p>
       <div class="socials">
         <a href="https://www.facebook.com/sageandstonebend" aria-label="Sage &amp; Stone on Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V13h2.7v8Z"/></svg></a>
         <a href="https://www.instagram.com/sageandstonebend" aria-label="Sage &amp; Stone on Instagram"><svg viewBox="0 0 24 24"><path d="M12 8.1A3.9 3.9 0 1 0 15.9 12 3.9 3.9 0 0 0 12 8.1Zm0 6.4a2.5 2.5 0 1 1 2.5-2.5 2.5 2.5 0 0 1-2.5 2.5ZM17.4 3H6.6A3.6 3.6 0 0 0 3 6.6v10.8A3.6 3.6 0 0 0 6.6 21h10.8a3.6 3.6 0 0 0 3.6-3.6V6.6A3.6 3.6 0 0 0 17.4 3Zm2.2 14.4a2.2 2.2 0 0 1-2.2 2.2H6.6a2.2 2.2 0 0 1-2.2-2.2V6.6a2.2 2.2 0 0 1 2.2-2.2h10.8a2.2 2.2 0 0 1 2.2 2.2ZM17 6.1a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z"/></svg></a>
@@ -227,7 +232,7 @@ def footer(root):
         <li>{SITE['street']}<br>{SITE['city']}, {SITE['region']} {SITE['zip']}</li>
         <li><a href="tel:{SITE['phone_tel']}">{SITE['phone_display']}</a></li>
         <li><a href="mailto:{SITE['email']}">{SITE['email']}</a></li>
-        <li>Mon–Fri 7am–5pm · Sat 8am–1pm</li>
+        <li>Mon-Fri 7am-5pm · Sat 8am-1pm</li>
       </ul>
     </div>
   </div>
@@ -241,7 +246,7 @@ def footer(root):
   </div>
 </footer>
 <div class="cookie" id="cookie" role="region" aria-label="Cookie notice" hidden>
-  <p><strong>Cookies, plainly.</strong> We'd like to use basic analytics to see how the site is used — no ad tracking, no data sales. Decline and everything still works. <a href="{root}privacy.html">Privacy policy</a></p>
+  <p><strong>Cookies, plainly.</strong> We'd like to use basic analytics to see how the site is used - no ad tracking, no data sales. Decline and everything still works. <a href="{root}privacy.html">Privacy policy</a></p>
   <div class="cookie-actions">
     <button type="button" class="btn btn-primary" id="ck-accept">Allow analytics</button>
     <button type="button" class="btn btn-ghost" id="ck-decline">Decline</button>
@@ -251,10 +256,10 @@ def footer(root):
   <div class="chat-pop" id="chat-pop" hidden>
     <div class="chat-head">
       <img src="{root}assets/img/s&amp;s-white.png" alt="" width="34" height="42">
-      <div><b>Sage &amp; Stone</b><span>Typically replies within the hour, Mon–Fri</span></div>
+      <div><b>Sage &amp; Stone</b><span>Typically replies within the hour, Mon-Fri</span></div>
     </div>
     <div class="chat-body">
-      <p>Got a yard question? Reach a real person — no bots, no phone trees.</p>
+      <p>Got a yard question? Reach a real person - no bots, no phone trees.</p>
       <div class="chat-links">
         <a href="tel:{SITE['phone_tel']}">{ICON_PHONE}Call {SITE['phone_display']}</a>
         <a href="sms:{SITE['phone_tel']}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 5.9 2 10.7c0 2.8 1.5 5.2 3.9 6.8-.1.9-.5 2.3-1.7 3.5 0 0 2.6-.2 4.7-1.7.99.25 2.03.4 3.1.4 5.5 0 10-3.9 10-8.7S17.5 2 12 2Zm-5 9.9a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm5 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/></svg>Text us</a>

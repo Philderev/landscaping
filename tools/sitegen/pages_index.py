@@ -9,28 +9,28 @@ SERVICES = [
         "name": "Landscape Design &amp; Build",
         "img": "svc-design.webp",
         "alt": "Landscape designer pointing at a color site plan on a laptop, concept drawings spread on the desk",
-        "blurb": "From the first site walk to the final walkthrough — native planting plans, boulder placement, and outdoor rooms designed around how you actually live.",
+        "blurb": "From the first site walk to the final walkthrough - native planting plans, boulder placement, and outdoor rooms designed around how you actually live.",
     },
     {
         "slug": "hardscaping-outdoor-living",
         "name": "Hardscaping &amp; Outdoor Living",
         "img": "svc-hardscape.webp",
         "alt": "Paver patio with a stone fire pit, seat walls and Adirondack chairs behind a brick home",
-        "blurb": "Paver patios, basalt fire pits, retaining walls, and pergolas — built on proper base so they hold their line through every freeze and thaw.",
+        "blurb": "Paver patios, basalt fire pits, retaining walls, and pergolas - built on proper base so they hold their line through every freeze and thaw.",
     },
     {
         "slug": "water-wise-irrigation",
         "name": "Water-Wise Irrigation",
         "img": "svc-irrigation.webp",
         "alt": "Irrigation sprinkler watering a green lawn with backlit water droplets catching the sun",
-        "blurb": "Drip zones, smart controllers, and hydrozoning that keep landscapes thriving on a high-desert water budget — not in spite of it.",
+        "blurb": "Drip zones, smart controllers, and hydrozoning that keep landscapes thriving on a high-desert water budget - not in spite of it.",
     },
     {
         "slug": "landscape-maintenance",
         "name": "Year-Round Maintenance",
         "img": "svc-maintenance.webp",
         "alt": "Gardener shaping a shrub with long-handled hedge shears",
-        "blurb": "Seasonal pruning, fertility programs, fall blowouts, and spring start-ups — from crews who know bitterbrush from bindweed.",
+        "blurb": "Seasonal pruning, fertility programs, fall blowouts, and spring start-ups - from crews who know bitterbrush from bindweed.",
     },
 ]
 
@@ -44,18 +44,18 @@ REVIEWS = [
     ("Priya &amp; Tom S.", "Awbrey Butte, Bend", "2 months ago",
      "We wanted low-water without it looking like a gravel pit. What we got is layered, full of birds, and basically ignores the deer. The maintenance plan keeps it dialed."),
     ("Jeff M.", "Sunriver", "5 days ago",
-     "Their irrigation rebuild found leaks two other outfits missed. The smart controller paid for itself the first season — and the lawn we kept is the healthiest it's ever been."),
+     "Their irrigation rebuild found leaks two other outfits missed. The smart controller paid for itself the first season - and the lawn we kept is the healthiest it's ever been."),
 ]
 
 FAQS = [
     ("What does a full landscape project cost in Bend?",
-     "Most full design-build projects at Sage &amp; Stone land between $25,000 and $120,000 depending on size and scope. Paver patios typically start around $8,500, water-wise planting conversions around $12,000, and irrigation rebuilds around $4,500. After a site walk you get a fixed, line-item estimate — not an hourly guess."),
+     "Most full design-build projects at Sage &amp; Stone land between $25,000 and $120,000 depending on size and scope. Paver patios typically start around $8,500, water-wise planting conversions around $12,000, and irrigation rebuilds around $4,500. After a site walk you get a fixed, line-item estimate - not an hourly guess."),
     ("How does the high desert change what you plant?",
-     "Bend sits at 3,600&nbsp;ft with about 12 inches of rain a year, USDA zone 6b, and frost possible any month. We build plant palettes around natives and proven adapters — bunchgrasses, penstemon, rabbitbrush, serviceberry, ponderosa — and group them by water need so irrigation supports the landscape instead of fighting it."),
+     "Bend sits at 3,600&nbsp;ft with about 12 inches of rain a year, USDA zone 6b, and frost possible any month. We build plant palettes around natives and proven adapters - bunchgrasses, penstemon, rabbitbrush, serviceberry, ponderosa - and group them by water need so irrigation supports the landscape instead of fighting it."),
     ("Will my landscape survive the deer?",
-     "Mostly, yes — by design. We lean on deer-resistant natives, protect vulnerable young plants through their first seasons, and place anything tasty inside fenced or courtyard zones. No honest landscaper promises deer-proof; we design deer-realistic."),
+     "Mostly, yes - by design. We lean on deer-resistant natives, protect vulnerable young plants through their first seasons, and place anything tasty inside fenced or courtyard zones. No honest landscaper promises deer-proof; we design deer-realistic."),
     ("When should I book to get on the schedule?",
-     "Design work happens year-round, and winter is actually the best time to start — your project is drawn, permitted, and first in line when the ground thaws. Build season runs roughly April through November, and the calendar usually fills by early spring."),
+     "Design work happens year-round, and winter is actually the best time to start - your project is drawn, permitted, and first in line when the ground thaws. Build season runs roughly April through November, and the calendar usually fills by early spring."),
     ("Do you handle irrigation blowouts and spring start-ups?",
      "Yes. Maintenance clients get fall blowouts before the first hard freeze and full spring start-ups with head-by-head checks, controller programming, and a written condition report."),
     ("Are you licensed and insured?",
@@ -145,8 +145,13 @@ BODY = f'''
         <div class="field"><label for="hero-phone">Phone</label><input id="hero-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" autocomplete="email" required></div>
         <div class="field"><label for="hero-service">What do you need?</label><select id="hero-service" name="service" required><option value="" selected disabled>Select a service</option><option value="design-build">Design &amp; build</option><option value="hardscape">Patio or hardscape</option><option value="irrigation">Irrigation</option><option value="maintenance">Maintenance</option><option value="not-sure">Not sure yet</option></select></div>
+        <label class="sms-consent" for="hero-sms-consent">
+          <input id="hero-sms-consent" name="sms_consent" type="checkbox" value="yes">
+          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from {SITE['short']}. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
+        </label>
         <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
         <p class="hero-form-note">No pressure. We reply within one business day.</p>
+        <p class="form-legal"><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a></p>
       </form>
     </div>
     <div class="hero-foot">
@@ -169,7 +174,7 @@ BODY = f'''
     <div class="sec-head rv">
       <p class="eyebrow">What we do</p>
       <h2 id="services-h">Four crafts, one crew, zero hand-offs</h2>
-      <p class="lede">Design, stone, water, and care under one roof — so the person who drew your landscape is the same company standing behind it ten years on.</p>
+      <p class="lede">Design, stone, water, and care under one roof - so the person who drew your landscape is the same company standing behind it ten years on.</p>
     </div>
     <div class="svc-grid">
       {_svc_cards()}
@@ -183,15 +188,15 @@ BODY = f'''
     <div class="manif-copy rv">
       <p class="eyebrow on-dark">Why the high desert is different</p>
       <h2 id="about-h">The high desert doesn't forgive a copy-paste landscape</h2>
-      <p>Plans drawn for Portland rot here. Twelve inches of rain, pumice soil that drains like a sieve, weeks of 90° sun, and a frost that can land in any month — Central Oregon breaks landscapes that weren't designed for it.</p>
+      <p>Plans drawn for Portland rot here. Twelve inches of rain, pumice soil that drains like a sieve, weeks of 90° sun, and a frost that can land in any month - Central Oregon breaks landscapes that weren't designed for it.</p>
       <p>We've spent fourteen years learning what holds: basalt and Deschutes river rock that shrug off frost heave, bunchgrass and penstemon that glow in August without a sprinkler line, ponderosa shade placed where winter sun still reaches the windows.</p>
-      <p>That's the whole philosophy — <strong>build with the desert, not against it</strong> — and it's why our landscapes look better in year five than they did on day one.</p>
+      <p>That's the whole philosophy - <strong>build with the desert, not against it</strong> - and it's why our landscapes look better in year five than they did on day one.</p>
     </div>
     <div class="fact-grid rv">
-      <div class="fact"><b>3,623&nbsp;ft</b><span>Bend's elevation — cold nights, intense UV, short growing season</span></div>
-      <div class="fact"><b>~12&nbsp;in</b><span>annual precipitation — half of it snow. Every drop is budgeted</span></div>
-      <div class="fact"><b>Zone&nbsp;6b</b><span>USDA hardiness — with frost possible in every calendar month</span></div>
-      <div class="fact"><b>300</b><span>days of sun a year working for you — if the plant palette is right</span></div>
+      <div class="fact"><b>3,623&nbsp;ft</b><span>Bend's elevation - cold nights, intense UV, short growing season</span></div>
+      <div class="fact"><b>~12&nbsp;in</b><span>annual precipitation - half of it snow. Every drop is budgeted</span></div>
+      <div class="fact"><b>Zone&nbsp;6b</b><span>USDA hardiness - with frost possible in every calendar month</span></div>
+      <div class="fact"><b>300</b><span>days of sun a year working for you - if the plant palette is right</span></div>
     </div>
   </div>
 </section>
@@ -205,7 +210,7 @@ BODY = f'''
     <div class="steps">
       <div class="step rv">
         <h3>The site walk</h3>
-        <p>We walk your property together — sun, wind, soil, drainage, deer paths — and listen to how you want to live outside. Free, no folder of upsells.</p>
+        <p>We walk your property together - sun, wind, soil, drainage, deer paths - and listen to how you want to live outside. Free, no folder of upsells.</p>
       </div>
       <div class="step rv">
         <h3>Design &amp; fixed estimate</h3>
@@ -217,7 +222,7 @@ BODY = f'''
       </div>
       <div class="step rv">
         <h3>Seasons of care</h3>
-        <p>Walkthrough, plant-by-plant care guide, two-season warranty — and a maintenance calendar if you'd rather we keep it dialed.</p>
+        <p>Walkthrough, plant-by-plant care guide, two-season warranty - and a maintenance calendar if you'd rather we keep it dialed.</p>
       </div>
     </div>
   </div>
@@ -228,7 +233,7 @@ BODY = f'''
     <div class="sec-head rv">
       <p class="eyebrow">Signature work</p>
       <h2 id="work-h">Built here, for here</h2>
-      <p class="lede">A few recent projects across Central Oregon — each one drawn from the lot's own rock, light, and horizon.</p>
+      <p class="lede">A few recent projects across Central Oregon - each one drawn from the lot's own rock, light, and horizon.</p>
     </div>
     <div class="proj-grid">
       <article class="proj rv">
@@ -243,7 +248,7 @@ BODY = f'''
         {lazy_img("assets/img/proj-meadow.webp", "Meadow planting in bloom with pink cosmos, cornflowers and coreopsis among fine grasses", 960, 720)}
         <div class="proj-body">
           <h3>Sisters Meadow Revival</h3>
-          <p>Half an acre of thirsty turf replaced with fescue meadow, penstemon drifts, and a decomposed-granite path — water use down 60%.</p>
+          <p>Half an acre of thirsty turf replaced with fescue meadow, penstemon drifts, and a decomposed-granite path - water use down 60%.</p>
           <ul class="tags"><li>Native planting</li><li>Irrigation</li><li>Sisters</li></ul>
         </div>
       </article>
@@ -343,8 +348,8 @@ BODY = f'''
           <textarea id="f-msg" name="message" placeholder="Lot size, what's there now, what you're dreaming about…"></textarea>
         </div>
         <label class="sms-consent" for="f-sms-consent">
-          <input id="f-sms-consent" name="sms_consent" type="checkbox" value="yes" required>
-          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from Sage &amp; Stone Landscape Co. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
+          <input id="f-sms-consent" name="sms_consent" type="checkbox" value="yes">
+          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from {SITE['short']}. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
         </label>
         <div class="form-actions">
           <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
@@ -360,8 +365,8 @@ BODY = f'''
       <div class="info-line">{ICON_CLOCK}
         <table class="hours">
           <caption class="skip">Business hours</caption>
-          <tr><td>Monday–Friday</td><td>7:00am – 5:00pm</td></tr>
-          <tr><td>Saturday</td><td>8:00am – 1:00pm</td></tr>
+          <tr><td>Monday-Friday</td><td>7:00am - 5:00pm</td></tr>
+          <tr><td>Saturday</td><td>8:00am - 1:00pm</td></tr>
           <tr><td>Sunday</td><td>Closed</td></tr>
         </table>
       </div>

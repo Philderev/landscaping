@@ -17,7 +17,7 @@ def remove_visible_dashes(html):
     for i in range(0, len(protected), 2):
         chunks = re.split(r'(<[^>]+>)', protected[i])
         for j in range(0, len(chunks), 2):
-            chunks[j] = re.sub(r'[\-–—]+', ' ', chunks[j])
+            chunks[j] = re.sub(r'[\u2013\u2014]+', ' ', chunks[j])
             chunks[j] = re.sub(r' {2,}', ' ', chunks[j])
             chunks[j] = re.sub(r' +(?=\n)', '', chunks[j])
         protected[i] = ''.join(chunks)
@@ -110,7 +110,7 @@ for slug, name in AREA_PAGES:
 # ------------------------------------------------------------------ pricing
 write("pricing.html", page(
     title="Landscaping Prices in Bend, OR (2026) | Sage & Stone Landscape Co.",
-    desc="Real 2026 landscaping prices for Bend & Central Oregon: paver patios $22–$28/sq ft, full design-build projects $25k–$120k, irrigation from $1.50/sq ft, maintenance $220–$480/mo. Fixed line-item estimates.",
+    desc="Real 2026 landscaping prices for Bend & Central Oregon: paver patios $22-$28/sq ft, full design-build projects $25k-$120k, irrigation from $1.50/sq ft, maintenance $220-$480/mo. Fixed line-item estimates.",
     canonical_path="pricing.html",
     root="",
     body=pages_pricing.body(),
@@ -135,7 +135,7 @@ write("terms.html", page(
 ))
 write("thank-you.html", page(
     title="Request received | Sage & Stone Landscape Co.",
-    desc="Thanks for your site walk request — a real person at Sage & Stone will call you within one business day.",
+    desc="Thanks for your site walk request - a real person at Sage & Stone will call you within one business day.",
     canonical_path="thank-you.html",
     root="",
     body=pages_legal.THANKS,
@@ -157,7 +157,7 @@ err_body = '''
 '''
 write("404.html", page(
     title="Page not found | Sage & Stone Landscape Co.",
-    desc="The page you're looking for doesn't exist. Return to Sage & Stone Landscape Co. — landscape design and build in Bend, Oregon.",
+    desc="The page you're looking for doesn't exist. Return to Sage & Stone Landscape Co. - landscape design and build in Bend, Oregon.",
     canonical_path="404.html",
     root="",
     body=err_body,
@@ -203,7 +203,7 @@ write("site.webmanifest", """{
 """)
 
 # ------------------------------------------------------------------ js
-write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 KB, no dependencies.
+write("assets/js/main.js", r"""// Sage & Stone - progressive enhancement. ~2 KB, no dependencies.
 (function () {
   "use strict";
 
@@ -280,7 +280,7 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
         });
         video.load();
         var p = video.play();
-        if (p && p.catch) p.catch(function () { /* poster stays — fine */ });
+        if (p && p.catch) p.catch(function () { /* poster stays - fine */ });
         if ("IntersectionObserver" in window) {
           new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
@@ -355,7 +355,7 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
   window.addEventListener("hashchange", fixAnchor);
   fixAnchor();
 
-  // Lead form — placeholder handler. Swap for the GHL form embed at launch;
+  // Lead form - placeholder handler. Swap for the GHL form embed at launch;
   // keep field names (name/phone/email/service/message) for tracking parity.
   // On success the visitor lands on the thank-you page (a clean conversion
   // URL for GA4/ads goals). Nothing is transmitted in this demo build.
@@ -367,7 +367,7 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
     });
   });
 
-  // Pricing calculator — mirrors the line-item rates published on the page.
+  // Pricing calculator - mirrors the line-item rates published on the page.
   var calc = document.getElementById("calc");
   if (calc) {
     var TYPES = {
@@ -401,7 +401,7 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
       });
       lo = Math.max(lo, t.floor); hi = Math.max(hi, lo * 1.4);
       sizeOut.textContent = sq.toLocaleString("en-US");
-      total.textContent = fmt(lo) + " – " + fmt(hi);
+      total.textContent = fmt(lo) + " - " + fmt(hi);
       desc.textContent = t.name + " · " + sq.toLocaleString("en-US") + " sq ft · " +
         TIER_NAMES[calc.elements["c-tier"].value] + " finish";
     };
@@ -411,7 +411,7 @@ write("assets/js/main.js", r"""// Sage & Stone — progressive enhancement. ~2 K
     update(true);
   }
 
-  // Cookie banner. No analytics load unless the visitor allows them —
+  // Cookie banner. No analytics load unless the visitor allows them -
   // wire the GA4/GTM snippet behind the "granted" choice at launch.
   var ck = document.getElementById("cookie");
   if (ck) {
@@ -457,10 +457,10 @@ Thumbs.db
 .DS_Store
 """)
 
-write("README.md", f"""# Sage & Stone Landscape Co. — Bend, Oregon
+write("README.md", f"""# Sage & Stone Landscape Co. - Bend, Oregon
 
 A hand-built static website for a high-desert landscaping company. No frameworks,
-no build step, no external requests — every page ships with inlined critical CSS,
+no build step, no external requests - every page ships with inlined critical CSS,
 a self-hosted variable font, and custom-made assets (logo, illustrations, and an
 original animated hero video rendered from code).
 
@@ -468,19 +468,19 @@ original animated hero video rendered from code).
 
 ## Highlights
 
-- **Hero background video** — original 12 s seamless-loop animation, encoded as
+- **Hero background video** - original 12 s seamless-loop animation, encoded as
   WebM (VP9) with an H.264 MP4 fallback (`yuv420p`, `+faststart`), `muted
   playsinline` so it autoplays on iPhone/iPad and macOS Safari. The video loads
   after `window.load`, never competing with first paint; users with
   `prefers-reduced-motion` or Save-Data get the poster only.
-- **Performance** — zero render-blocking requests: CSS inlined, single subset
+- **Performance** - zero render-blocking requests: CSS inlined, single subset
   woff2 (~25 KB) preloaded, poster preloaded with `fetchpriority=high`,
   vanilla JS (~2 KB, deferred). All images are SVG or optimized WebP with
   explicit dimensions (no CLS).
-- **SEO / Search Console** — unique titles + meta descriptions, canonical URLs,
+- **SEO / Search Console** - unique titles + meta descriptions, canonical URLs,
   `LandscapingBusiness` + `BreadcrumbList` structured data, `sitemap.xml`,
   `robots.txt`, Open Graph + Twitter cards, one-page-per-service architecture.
-- **Accessibility** — semantic landmarks, skip link, labeled form controls,
+- **Accessibility** - semantic landmarks, skip link, labeled form controls,
   focus-visible styles, AA contrast, reduced-motion support.
 
 ## Structure
@@ -492,7 +492,7 @@ areas/*.html                   one page per service area (8), each with local co
 privacy.html · terms.html      legal pages (linked from footer, form, cookie banner)
 thank-you.html                 post-submit conversion page (noindex)
 404.html                       styled not-found page (GitHub Pages picks it up)
-assets/fonts/                  Fraunces subset (OFL licensed — see OFL.txt)
+assets/fonts/                  Fraunces subset (OFL licensed - see OFL.txt)
 assets/img/                    logo, favicons, illustrations, map + og image
 assets/video/                  hero.webm / hero.mp4 / poster
 sitemap.xml · robots.txt · site.webmanifest
@@ -502,20 +502,20 @@ sitemap.xml · robots.txt · site.webmanifest
 
 - **Nav dropdowns** for Services and Service Areas (hover + keyboard focus on
   desktop, expanded groups in the mobile menu).
-- **Cookie banner** — consent-first: no analytics unless the visitor allows
+- **Cookie banner** - consent-first: no analytics unless the visitor allows
   them; choice stored in `localStorage` (`ss-consent`). Wire GA4/GTM behind the
   `granted` value at launch.
-- **Floating chat launcher** — call/text/email popover; the GHL webchat widget
+- **Floating chat launcher** - call/text/email popover; the GHL webchat widget
   mounts inside it at launch (marked with a comment).
 - **Lead form** → redirects to `thank-you.html`, a clean conversion URL for
   GA4 / ads goals.
 
 ## Launch notes
 
-- The lead form is a styled placeholder — swap in the GHL form embed at launch
+- The lead form is a styled placeholder - swap in the GHL form embed at launch
   (marked with a comment in `index.html`; field names are ready for tracking).
 - GA4 / GTM snippets go just before `</head>` on every page when IDs are
-  provided — load them only after cookie consent (`ss-consent === "granted"`).
+  provided - load them only after cookie consent (`ss-consent === "granted"`).
 - `sitemap.xml`, canonicals, and og:urls point at the staging URL; replace
   `philderev.github.io/landscaping/` with the production domain at deploy.
 
