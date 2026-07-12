@@ -112,9 +112,13 @@ def _marquee():
     towns = SITE["areas"] + ["Central Oregon since 2012"]
     items = "".join(f"<li>{t}</li>" for t in towns)
     return f'''<div class="marquee">
-  <div class="marq-track">
-    <ul>{items}</ul>
-    <ul aria-hidden="true">{items}</ul>
+  <div class="wrap">
+    <div class="marq-clip">
+      <div class="marq-track">
+        <ul>{items}</ul>
+        <ul aria-hidden="true">{items}</ul>
+      </div>
+    </div>
   </div>
 </div>'''
 
