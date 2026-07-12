@@ -212,12 +212,19 @@ ul{padding-left:1.2em}
 .tags li{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pine-700);
   background:var(--sand-2);padding:.32rem .7rem}
 
-/* reviews */
-.reviews{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,340px);gap:1.3rem;
-  overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(1.1rem,4vw,2.5rem) 1.2rem;
-  max-width:var(--wrap);margin-inline:auto;scrollbar-width:thin;scrollbar-color:var(--sage) transparent}
-.review{scroll-snap-align:start;background:var(--cream);border:1px solid rgba(27,46,36,.14);
+/* reviews — marquee-style loop, clipped to the content column */
+.rev-clip{overflow:hidden;padding-block:.4rem 1.2rem;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rev-track{display:flex;width:max-content;animation:marq 60s linear infinite}
+.rev-clip:hover .rev-track,.rev-track:focus-within{animation-play-state:paused}
+.rev-set{display:flex;gap:1.3rem;padding-right:1.3rem}
+.review{width:min(340px,78vw);flex:none;background:var(--cream);border:1px solid rgba(27,46,36,.14);
   padding:1.5rem 1.6rem 1.4rem;display:flex;flex-direction:column;position:relative}
+@media (prefers-reduced-motion:reduce){
+  .rev-track{animation:none}
+  .rev-clip{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scrollbar-width:thin;scrollbar-color:var(--sage) transparent}
+}
 .review-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
 .review-avatar{flex:none;width:36px;height:36px;display:grid;place-items:center;
   background:var(--clay);color:var(--cream);font-family:var(--serif);font-weight:600;font-size:1.05rem}

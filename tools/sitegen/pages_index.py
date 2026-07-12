@@ -77,9 +77,12 @@ def _svc_cards():
     return "\n".join(out)
 
 
-def _reviews():
+def _reviews(hidden=False):
+    """Review cards; hidden=True builds the aria-hidden marquee duplicate
+    (links get tabindex=-1 so the copy is never keyboard-focusable)."""
     out = []
     stars = f'<div class="stars" role="img" aria-label="5 out of 5 stars">{STAR * 5}</div>'
+    tab = ' tabindex="-1"' if hidden else ""
     google_url = "https://www.google.com/maps?q=" + SITE["street"].replace(" ", "+") + f",+{SITE['city']},+{SITE['region']}+{SITE['zip']}"
     for name, place, when, text in REVIEWS:
         initial = name[0]
@@ -95,7 +98,7 @@ def _reviews():
   <p>{text}</p>
   <footer>
     <span>Posted on Google</span>
-    <a href="{google_url}" target="_blank" rel="noopener">Read on Google</a>
+    <a href="{google_url}" target="_blank" rel="noopener"{tab}>Read on Google</a>
   </footer>
 </article>''')
     return "\n".join(out)
@@ -273,8 +276,17 @@ BODY = f'''
     <p class="eyebrow">Word of mouth</p>
     <h2 id="reviews-h">What neighbors say</h2>
   </div>
-  <div class="reviews">
-    {_reviews()}
+  <div class="wrap">
+    <div class="rev-clip">
+      <div class="rev-track">
+        <div class="rev-set">
+          {_reviews()}
+        </div>
+        <div class="rev-set" aria-hidden="true">
+          {_reviews(hidden=True)}
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
