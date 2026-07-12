@@ -111,6 +111,23 @@ def _faq():
     return "\n".join(out)
 
 
+def _sms_consent(idp):
+    """A2P 10DLC-compliant SMS consent: separate optional checkboxes for
+    non-marketing and marketing messages, carrier-required language."""
+    return f'''<fieldset class="sms-consents">
+          <legend>Optional SMS consent</legend>
+          <label class="sms-consent" for="{idp}-sms-consent">
+            <input id="{idp}-sms-consent" type="checkbox" name="sms_transactional_consent" value="yes">
+            <span>I consent to receive non-marketing text messages from {SITE['short']} regarding my site walk request, appointment reminders, and project updates. Message frequency varies. Message and data rates may apply. Reply HELP for assistance or STOP to opt out.</span>
+          </label>
+          <label class="sms-consent" for="{idp}-mkt-consent">
+            <input id="{idp}-mkt-consent" type="checkbox" name="sms_marketing_consent" value="yes">
+            <span>I consent to receive marketing text messages from {SITE['short']} regarding seasonal offers, promotions, and landscaping services. Message frequency varies. Message and data rates may apply. Reply HELP for assistance or STOP to opt out.</span>
+          </label>
+          <p class="consent-note">Consent is optional and is not a condition of purchase.</p>
+        </fieldset>'''
+
+
 def _marquee():
     towns = SITE["areas"] + ["Central Oregon since 2012"]
     items = "".join(f"<li>{t}</li>" for t in towns)
@@ -152,10 +169,7 @@ BODY = f'''
         <div class="field"><label for="hero-phone">Phone</label><input id="hero-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" autocomplete="email" required></div>
         <div class="field"><label for="hero-service">What do you need?</label><select id="hero-service" name="service" required><option value="" selected disabled>Select a service</option><option value="design-build">Design &amp; build</option><option value="hardscape">Patio or hardscape</option><option value="irrigation">Irrigation</option><option value="maintenance">Maintenance</option><option value="not-sure">Not sure yet</option></select></div>
-        <label class="sms-consent" for="hero-sms-consent">
-          <input id="hero-sms-consent" name="sms_consent" type="checkbox" value="yes">
-          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from {SITE['short']}. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
-        </label>
+        {_sms_consent('hero')}
         <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
         <p class="hero-form-note">No pressure. We reply within one business day.</p>
         <p class="form-legal"><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a></p>
@@ -364,10 +378,7 @@ BODY = f'''
           <label for="f-msg">Tell us about the project</label>
           <textarea id="f-msg" name="message" placeholder="Lot size, what's there now, what you're dreaming about…"></textarea>
         </div>
-        <label class="sms-consent" for="f-sms-consent">
-          <input id="f-sms-consent" name="sms_consent" type="checkbox" value="yes">
-          <span>I consent to receive SMS notifications, alerts, and occasional marketing communications from {SITE['short']}. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe at any time.</span>
-        </label>
+        {_sms_consent('f')}
         <div class="form-actions">
           <button class="btn btn-primary" type="submit">Request my site walk {ARR}</button>
           <p class="form-legal"><a href="privacy.html">Privacy Policy</a><span aria-hidden="true"> | </span><a href="terms.html">Terms of Service</a></p>

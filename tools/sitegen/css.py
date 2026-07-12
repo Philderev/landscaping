@@ -270,7 +270,10 @@ ul{padding-left:1.2em}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px rgba(85,112,74,.18)}
 .field textarea{min-height:130px;resize:vertical}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.sms-consent{display:flex;align-items:flex-start;gap:.7rem;margin:0 0 1.25rem;color:var(--ink-soft);font-size:.86rem;line-height:1.25;cursor:pointer}
+.sms-consents{border:none;padding:0;margin:0 0 1.1rem;min-width:0}
+.sms-consents legend{font-weight:700;font-size:.82rem;color:var(--pine-900);padding:0;margin-bottom:.5rem}
+.consent-note{font-size:.8rem;color:var(--ink-soft);margin:0}
+.sms-consent{display:flex;align-items:flex-start;gap:.7rem;margin:0 0 .8rem;color:var(--ink-soft);font-size:.86rem;line-height:1.25;cursor:pointer}
 .sms-consent input{width:18px;height:18px;flex:none;margin:.15rem 0 0;accent-color:var(--pine-900)}
 .sms-consent span{max-width:58ch}
 .form-actions{text-align:center}
