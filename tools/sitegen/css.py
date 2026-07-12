@@ -33,6 +33,7 @@ body{
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 h1,h2,h3,.serif{font-family:var(--serif);font-weight:420;line-height:1.25;color:var(--pine-900);margin:0 0 .5em;letter-spacing:-.01em}
+h1,h2{margin-bottom:.3em}
 h1{font-size:clamp(2.5rem,6.2vw,4.35rem);line-height:.9}
 h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
 h3{font-size:1.35rem;line-height:1.25}
@@ -51,7 +52,7 @@ ul{padding-left:1.2em}
 .eyebrow{
   display:inline-flex;align-items:center;gap:.6rem;
   font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--clay);margin-bottom:1.1rem;
+  color:var(--clay);margin-bottom:.6rem;
 }
 .eyebrow.on-dark{color:var(--gold)}
 .lede{font-size:clamp(1.08rem,1.6vw,1.28rem);color:var(--ink-soft);max-width:58ch}
