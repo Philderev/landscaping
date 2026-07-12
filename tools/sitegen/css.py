@@ -33,7 +33,7 @@ body{
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 h1,h2,h3,.serif{font-family:var(--serif);font-weight:420;line-height:1.25;color:var(--pine-900);margin:0 0 .5em;letter-spacing:-.01em}
-h1{font-size:clamp(2.5rem,6.2vw,4.35rem)}
+h1{font-size:clamp(2.5rem,6.2vw,4.35rem);line-height:1.05}
 h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
 h3{font-size:1.35rem;line-height:1.25}
 p{margin:0 0 1.25em}
