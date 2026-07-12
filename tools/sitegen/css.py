@@ -139,8 +139,7 @@ ul{padding-left:1.2em}
 .marquee:hover .marq-track{animation-play-state:paused}
 .marq-track ul{display:flex;list-style:none;margin:0;padding:0 2.8rem 0 0;gap:2.8rem;white-space:nowrap;
   font-family:var(--serif);font-weight:420;font-size:clamp(1.15rem,1.8vw,1.5rem);letter-spacing:.01em;line-height:1.3}
-.marq-track ul li{display:flex;align-items:center;gap:2.8rem}
-.marq-track ul li::after{content:"✦";color:var(--clay);font-size:.75rem;letter-spacing:0}
+.marq-track ul li{display:flex;align-items:center}
 @keyframes marq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){
   .marq-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}
